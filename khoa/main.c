@@ -2,31 +2,17 @@
 #include <math.h>
 int main()
 {
-	float a, b, c;
-	printf("ax^2 + bx + c = 0\n");
-	printf("a = ");
-	scanf_s("%f", &a);
-	printf("b = ");
-	scanf_s("%f", &b);
-	printf("c = ");
-	scanf_s("%f", &c);
+	int a; 
+	printf("Enter a number : ");
+	scanf_s("%d", &a);
 
-	float del = pow(b, 2) - (4 * a * c);
-	if (del > 0)
+	if (a >= 0)
 	{
-		float x1, x2;
-		x1 = (-b + sqrt(del)) / (2 * a);
-		x2 = (-b - sqrt(del)) / (2 * a);
-		printf("x1 = %.3f \nx2 = %.3f", x1, x2);
-	}
-	else if (del == 0)
-	{
-		float x = -b / (2 * a);
-		printf("x1 = x2 = %.3f", x);
+		printf("This is a positive number!\n");
 	}
 	else
 	{
-		printf("Phuong trinh vo nghiem");
+		printf("This is a negative number!\n");
 	}
 
 	return 0;
