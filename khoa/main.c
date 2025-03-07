@@ -1,26 +1,32 @@
 #include <stdio.h>
-
+#include <math.h>
 int main()
 {
-	int a, b, c;
+	float a, b, c;
+	printf("ax^2 + bx + c = 0\n");
 	printf("a = ");
-	scanf_s("%d", &a);
+	scanf_s("%f", &a);
 	printf("b = ");
-	scanf_s("%d", &b);
+	scanf_s("%f", &b);
 	printf("c = ");
-	scanf_s("%d", &c);
+	scanf_s("%f", &c);
 
-	if (a > b && a > c)
+	float del = pow(b, 2) - (4 * a * c);
+	if (del > 0)
 	{
-		printf("Greatest number is %d", a);
+		float x1, x2;
+		x1 = (-b + sqrt(del)) / (2 * a);
+		x2 = (-b - sqrt(del)) / (2 * a);
+		printf("x1 = %.3f \nx2 = %.3f", x1, x2);
 	}
-	else if (b > a && b > c)
+	else if (del == 0)
 	{
-		printf("Greatest number is %d", b);
+		float x = -b / (2 * a);
+		printf("x1 = x2 = %.3f", x);
 	}
 	else
 	{
-		printf("Greatest number is %d", c);
+		printf("Phuong trinh vo nghiem");
 	}
 
 	return 0;
