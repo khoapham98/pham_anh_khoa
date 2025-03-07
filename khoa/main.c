@@ -6,13 +6,13 @@ int main()
 	printf("Enter a number : ");
 	scanf_s("%d", &a);
 
-	if (a >= 0)
+	if (a % 2 == 0)
 	{
-		printf("This is a positive number!\n");
+		printf("This is an even number!\n");
 	}
 	else
 	{
-		printf("This is a negative number!\n");
+		printf("This is an odd number!\n");
 	}
 
 	return 0;
