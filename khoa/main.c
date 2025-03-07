@@ -2,46 +2,48 @@
 
 int main()
 {
-	int kwh;
-	printf("KWh : ");
-	scanf_s("%d", &kwh);
+	int x;
+	printf("Enter your income: ");
+	scanf_s("%d", &x);
 
-	int price[6] = {1678, 1734, 2014, 2536, 2834, 2927};
-	int money = 0, i = 0;
+	int tax, income = x - 11000000;
 
-	while (kwh > 0)
+	if (income <= 0)
 	{
-		if (i < 2)
+		tax = 0;
+	}
+	else
+	{
+		if (income <= 5e6)
 		{
-			if (kwh <= 50)
-			{
-				money += (kwh * price[i]);
-			}
-			else
-			{
-				money += (50 * price[i]);
-			}
-			kwh -= 50;
+			tax = income * 0.05;
 		}
-		else 
+		else if (income <= 10e6)
 		{
-			if (kwh <= 100)
-			{
-				money += (kwh * price[i]);
-			}
-			else
-			{
-				money += (100 * price[i]);
-			}
-			kwh -= 100;
+			tax = (5e6 * 0.05) + ((income - 5e6) * 0.1);
 		}
-		i++;
-		if (i > 5)
+		else if (income <= 18e6)
 		{
-			i = 5;
+			tax = (5e6 * 0.05) + (5e6 * 0.1) + ((income - 10e6) * 0.15);
+		}
+		else if (income <= 32e6)
+		{
+			tax = (5e6 * 0.05) + (5e6 * 0.1) + (8e6 * 0.15) + ((income - 18e6) * 0.2);
+		}
+		else if (income <= 52e6)
+		{
+			tax = (5e6 * 0.05) + (5e6 * 0.1) + (8e6 * 0.15) + (14e6 * 0.2) + ((income - 32e6) * 0.25);
+		}
+		else if (income <= 80e6)
+		{
+			tax = (5e6 * 0.05) + (5e6 * 0.1) + (8e6 * 0.15) + (14e6 * 0.2) + (20e6 * 0.25) + ((income - 52e6) * 0.3);
+		}
+		else
+		{
+			tax = (5e6 * 0.05) + (5e6 * 0.1) + (8e6 * 0.15) + (14e6 * 0.2) + (20e6 * 0.25) + (28e6 * 0.3) + ((income - 80e6) * 0.35);
 		}
 	}
 
-	printf("You have to pay : %d VND !\n", money);
+	printf("Your taxable income : %d VND", tax);
 	return 0;
 }
