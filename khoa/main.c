@@ -6,74 +6,42 @@ int main()
 	printf("KWh : ");
 	scanf_s("%d", &kwh);
 
-	int money = 0;
-	int i = 0;
+	int price[6] = {1678, 1734, 2014, 2536, 2834, 2927};
+	int money = 0, i = 0;
+
 	while (kwh > 0)
 	{
-		++i;
-		switch (i)
+		if (i < 2)
 		{
-		case 1:
-			if (kwh < 50)
+			if (kwh <= 50)
 			{
-				money = kwh * 1678;
+				money += (kwh * price[i]);
 			}
 			else
 			{
-				money = 50 * 1678;
+				money += (50 * price[i]);
 			}
 			kwh -= 50;
-			break;
-		case 2:
-			if (kwh < 50)
+		}
+		else 
+		{
+			if (kwh <= 100)
 			{
-				money += (kwh * 1734);
+				money += (kwh * price[i]);
 			}
 			else
 			{
-				money += (50 * 1734);
-			}
-			kwh -= 50;
-			break;
-		case 3:
-			if (kwh < 100)
-			{
-				money += (kwh * 2014);
-			}
-			else
-			{
-				money += (100 * 2014);
+				money += (100 * price[i]);
 			}
 			kwh -= 100;
-			break;
-		case 4:
-			if (kwh < 100)
-			{
-				money += (kwh * 2536);
-			}
-			else
-			{
-				money += (100 * 2536);
-			}
-			kwh -= 100;
-			break;
-		case 5:
-			if (kwh < 100)
-			{
-				money += (kwh * 2834);
-			}
-			else
-			{
-				money += (100 * 2834);
-			}
-			kwh -= 100;
-			break;
-		default:
-			money += (kwh * 2927);
-			kwh = 0;
+		}
+		i++;
+		if (i > 5)
+		{
+			i = 5;
 		}
 	}
 
-	printf("amount = %d VND", money);
+	printf("You have to pay : %d VND !\n", money);
 	return 0;
 }
