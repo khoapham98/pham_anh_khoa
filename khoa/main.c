@@ -2,17 +2,25 @@
 #include <math.h>
 int main()
 {
-	int a; 
-	printf("Enter a number : ");
-	scanf_s("%d", &a);
+	float gpa;
+	printf("Enter student's GPA: ");
+	scanf_s("%f", &gpa);
 
-	if (a % 2 == 0)
+	if (gpa >= 8)
 	{
-		printf("This is an even number!\n");
+		printf("GIOI\n");
+	}
+	else if (gpa >= 6.5)
+	{
+		printf("KHA\n");
+	}
+	else if (gpa >= 5.0)
+	{
+		printf("TRUNG BINH\n");
 	}
 	else
 	{
-		printf("This is an odd number!\n");
+		printf("YEU\n");
 	}
 
 	return 0;
