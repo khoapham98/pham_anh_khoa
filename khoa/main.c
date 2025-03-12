@@ -3,20 +3,37 @@
 
 int main()
 {
-	int a, b;
-	printf("a = ");
-	scanf_s("%d", &a);
-	printf("b = ");
-	scanf_s("%d", &b);
+	int income;
+	printf("Your monthly income (kVND) : ");
+	scanf_s("%d", &income);
 
-	double h = (b - a) / 1000.0;
-	double res = 0; 
+	float percent[] = { 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 };
+	int level[] = { 5000, 5000, 8000, 14000, 20000, 28000 };
 
-	for (int i = 0; i < 1000; i++)
+	int tax = income - 11000;
+	if (tax <= 0)
 	{
-		res += (h * (pow((a + (i * h)), 2) + pow((a + ((i + 1) * h)), 2))) / 2;
+		printf("No taxes! Congrats!");
+	}
+	else
+	{
+		float pay = 0;
+		int i = 0;
+		while (tax > 0 && i < 7)
+		{
+			if (tax <= level[i] || i == 6)
+			{
+				pay += tax * percent[i];
+			}
+			else
+			{
+				pay += level[i] * percent[i];
+			}
+			tax -= level[i];
+			i++;
+		}
+		printf("Your tax is : %.0f kVND \n", pay);
 	}
 
-	printf("Tich phan cua f(x) trong khoang [%d, %d] = %.3lf", a, b, res);
 	return 0;
 }
