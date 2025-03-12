@@ -3,20 +3,15 @@
 int main()
 {
 	int x; 
-	printf("Enter number: ");
+	printf("Nhap so : ");
 	scanf_s("%d", &x);
 
-	int res = 0;
-	while (x > 0)
+	long long res = 1;
+	for (int i = 1; i <= x; i++)
 	{
-		int tmp = x % 10;
-		if (tmp % 2 == 0)
-		{
-			res += tmp;
-		}
-		x /= 10;
+		res *= i;
 	}
-	printf("Sum of even numbers = %d", res);
 
+	printf("Giai thua cua %d la : %lld", x, res);
 	return 0;
 }
