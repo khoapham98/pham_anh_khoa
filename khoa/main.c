@@ -9,25 +9,14 @@ int main()
 	printf("b = ");
 	scanf_s("%d", &b);
 
-	if (a == 0 && b == 0)
+	double h = (b - a) / 1000.0;
+	double res = 0; 
+
+	for (int i = 0; i < 1000; i++)
 	{
-		printf("Khong xac dinh");
+		res += (h * (pow((a + (i * h)), 2) + pow((a + ((i + 1) * h)), 2))) / 2;
 	}
-	else if (a == 0 || b == 0)
-	{
-		printf("Uoc so chung lon nhat : %.0f", fmax(a, b));
-	}
-	else
-	{
-		for (int i = fmin(abs(a), abs(b)); i >= 1; i--)
-		{
-			if (a % i == 0 && b % i == 0)
-			{
-				printf("Uoc so chung lon nhat : %d", i);
-				break;
-			}
-		}
-	}
-	
+
+	printf("Tich phan cua f(x) trong khoang [%d, %d] = %.3lf", a, b, res);
 	return 0;
 }
