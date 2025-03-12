@@ -2,14 +2,17 @@
 
 int main()
 {
-	for (int i = 1; i <= 10; i++)
+	int x; 
+	printf("Enter number: ");
+	scanf_s("%d", &x);
+
+	int res = 0;
+	while (x > 0)
 	{
-		for (int j = 2; j < 10; j++)
-		{
-			printf("%d x %d = %d \t", j, i, i * j);
-		}
-		printf("\n");
+		res += x % 10;
+		x /= 10;
 	}
+	printf("Sum = %d", res);
 
 	return 0;
 }
