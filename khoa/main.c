@@ -2,12 +2,13 @@
 
 int main()
 {
-	int x; 
+	int x, i = 0; 
 	do
 	{
 		printf("Nhap so : ");
 		scanf_s("%d", &x);
-	} while (x != 0);
+		i++;
+	} while (x != 0 && i < 5);
 
 	return 0;
 }
