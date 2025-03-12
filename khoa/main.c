@@ -3,33 +3,31 @@
 
 int main()
 {
-	int num;
-	printf("Enter number : ");
-	scanf_s("%d", &num);
+	int a, b;
+	printf("a = ");
+	scanf_s("%d", &a);
+	printf("b = ");
+	scanf_s("%d", &b);
 
-	if (num > 2)
+	if (a == 0 && b == 0)
 	{
-		for (int i = 2; i < num; i++)
-		{
-			int check = 1;
-			for (int j = 2; j < i; j++)
-			{
-				if (i % j == 0)
-				{
-					check = 0;
-					break;
-				}
-			}
-			if (check)
-			{
-				printf("%d\n", i);
-			}
-		}
+		printf("Khong xac dinh");
+	}
+	else if (a == 0 || b == 0)
+	{
+		printf("Uoc so chung lon nhat : %.0f", fmax(a, b));
 	}
 	else
 	{
-		printf("NONE");
+		for (int i = fmin(abs(a), abs(b)); i >= 1; i--)
+		{
+			if (a % i == 0 && b % i == 0)
+			{
+				printf("Uoc so chung lon nhat : %d", i);
+				break;
+			}
+		}
 	}
-
+	
 	return 0;
 }
