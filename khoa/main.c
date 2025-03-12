@@ -1,20 +1,35 @@
 #include <stdio.h>
 #include <math.h>
+
 int main()
 {
-	int money;
-	printf("Amount of money you want to deposit (VND) : ");
-	scanf_s("%d", &money);
-	float interest;
-	printf("Percent of interest per year : ");
-	scanf_s("%f", &interest);
-	int year;
-	printf("Number of years : ");
-	scanf_s("%d", &year);
+	int num;
+	printf("Enter number : ");
+	scanf_s("%d", &num);
 
-	long long res;
-	res = money * pow((1 + (interest / 100)), year);
-	printf("$ after %d years : %lld VND\n", year, res);
+	if (num > 2)
+	{
+		for (int i = 2; i < num; i++)
+		{
+			int check = 1;
+			for (int j = 2; j < i; j++)
+			{
+				if (i % j == 0)
+				{
+					check = 0;
+					break;
+				}
+			}
+			if (check)
+			{
+				printf("%d\n", i);
+			}
+		}
+	}
+	else
+	{
+		printf("NONE");
+	}
 
 	return 0;
 }
