@@ -9,10 +9,14 @@ int main()
 	int res = 0;
 	while (x > 0)
 	{
-		res += x % 10;
+		int tmp = x % 10;
+		if (tmp % 2 == 0)
+		{
+			res += tmp;
+		}
 		x /= 10;
 	}
-	printf("Sum = %d", res);
+	printf("Sum of even numbers = %d", res);
 
 	return 0;
 }
