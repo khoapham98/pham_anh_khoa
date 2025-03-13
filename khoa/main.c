@@ -1,39 +1,47 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <math.h>
 
 int main()
 {
-	int enterMoney;
-	do
+	long long num;
+	printf("Enter number (< 10B VND) : ");
+	scanf_s("%lld", &num);
+
+	long long tmp = num;
+	int digit = 0;
+
+	while (tmp > 0)
 	{
-		printf("Amount of money you want to withdraw (kVND) : ");
-		scanf_s("%d", &enterMoney);
-	} while (enterMoney % 50 != 0);
-
-	int price[] = { 50, 100, 200, 500 };
-	int to[] = { 0, 0, 0, 0 };
-	int moneyOut = 0;
-	int i = 0;
-
-	while (moneyOut < enterMoney)
-	{
-		if ((moneyOut + price[i]) <= enterMoney)
-		{
-			moneyOut += price[i];
-			to[i]++;
-		}
-		i++;
-
-		if (i > 3)
-		{
-			i = 0;
-		}
+		tmp /= 10;
+		digit++;
 	}
 
-	for (int i = 0; i < 4; i++)
+	int i = digit;
+	int arr[10] = { 0 };
+	long long tmp1 = num;
+
+	while (tmp1 > 0)
 	{
-		printf("%d x %dk VND \n", to[i], price[i]);
+		arr[--i] = tmp1 % 10;
+		tmp1 /= 10;
 	}
 
+	char *ch[10] = { "khong", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin"};
+	char *dv[10] = { "dong", "muoi", "tram", "nghin", "muoi", "tram", "trieu", "muoi", "tram", "ty" };
+
+	printf("\nChu cai : ");
+	for (int j = 0, k = digit - 1; j < digit; j++, k--)
+	{
+		if (j == 0 && arr[j] == 1 && (digit == 5 || digit == 8)) {}
+		else 
+		{ 
+			printf(ch[arr[j]]); 
+		}
+		printf(" ");
+		printf(dv[k]);
+		printf(" ");
+	}
+	
+	printf("\n");
 	return 0;
 }
