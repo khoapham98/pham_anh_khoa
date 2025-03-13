@@ -3,31 +3,18 @@
 
 int main()
 {
-	int arr[10];
-	int res = 0;
+	char str[] = "XiN cHaO";
 
-	for (int i = 0; i < 10; i++)
+	int i = 0, cnt = 0;
+	while (str[i] != 0)
 	{
-		scanf_s("%d", &arr[i]);
-	}
-
-	int max = arr[0];
-	for (int i = 1; i < 10; i++)
-	{
-		if (arr[i] > max)
+		if (str[i] >= 65 && str[i] <= 90)
 		{
-			max = arr[i];
+			cnt++;
 		}
+		i++;
 	}
 
-	printf("Positions of max = %d is : ", max);
-	for (int i = 0; i < 10; i++)
-	{
-		if (arr[i] == max)
-		{
-			printf("%d ", i);
-		}
-	}
-
+	printf("So luong ky tu viet hoa : %d", cnt);
 	return 0;
 }
