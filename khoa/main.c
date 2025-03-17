@@ -1,40 +1,23 @@
 ﻿#include <stdio.h>
 #include <math.h>
 
-void sort(int a[]);
+int CountChar(char str[]);
 
 int main()
 {
-	int arr[10] = { 0 };
+	char string[] = "Hello World";
 
-	for (int i = 0; i < 10; i++)
-	{
-		printf("arr[%d] = ", i);
-		scanf_s("%d", &arr[i]);
-	}
-
-	sort(arr);
-	printf("New array: ");
-	for (int i = 0; i < 10; i++)
-	{
-		printf("%d ", arr[i]);
-	}
-
+	printf("Characters : %d", CountChar(string));
 	return 0;
 }
 
-void sort(int a[])
+int CountChar(char str[])
 {
-	for (int i = 0; i < 9; i++)
+	int cnt = 0;
+
+	while (str[cnt] != 0)
 	{
-		for (int j = 0; j < 9 - i; j++)
-		{
-			if (a[j] > a[j + 1])
-			{
-				int tmp = a[j];
-				a[j] = a[j + 1];
-				a[j + 1] = tmp;
-			}
-		}
+		cnt++;
 	}
+	return cnt;
 }
