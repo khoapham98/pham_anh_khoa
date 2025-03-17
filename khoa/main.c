@@ -1,7 +1,7 @@
 ﻿#include <stdio.h>
 #include <math.h>
 
-void checkPrime(int a[]);
+int findMax(int a[]);
 
 int main()
 {
@@ -13,30 +13,19 @@ int main()
 		scanf_s("%d", &arr[i]);
 	}
 
-	for (int i = 0; i < 10; i++)
-	{
-		if (arr[i] > 1)
-		{
-			checkPrime(arr[i]);
-		}
-	}
-
+	printf("Max number is : %d", findMax(arr));
 	return 0;
 }
 
-void checkPrime(int num)
+int findMax(int a[])
 {
-	int isPrime = 1;
-	for (int i = 2; i <= sqrt(num); i++)
+	int max = a[0];
+	for (int i = 1; i < 10; i++)
 	{
-		if (num % i == 0)
+		if (a[i] > max)
 		{
-			isPrime = 0;
-			break;
+			max = a[i];
 		}
 	}
-	if (isPrime)
-	{
-		printf("%d ", num);
-	}
+	return max; 
 }
