@@ -3,18 +3,20 @@
 
 int main()
 {
-	char str[] = "XiN cHaO";
-
-	int i = 0, cnt = 0;
-	while (str[i] != 0)
+	int arr[10] = { 0 };
+	
+	for (int i = 0; i < 10; i++)
 	{
-		if (str[i] >= 65 && str[i] <= 90)
-		{
-			cnt++;
-		}
-		i++;
+		printf("arr[%d] = ", i);
+		scanf_s("%d", &arr[i]);
 	}
+	
+	int sum = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		sum += arr[i];
+	}
+	printf("SUM = %d", sum);
 
-	printf("So luong ky tu viet hoa : %d", cnt);
 	return 0;
 }
