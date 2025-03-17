@@ -10,20 +10,24 @@ int main()
 	{
 		printf("arr[%d] = ", i);
 		scanf_s("%d", &arr[i]);
-		if (arr[i] % 2 != 0)
+	}
+
+	int max = arr[0];
+	for (int i = 1; i < 10; i++)
+	{
+		if (arr[i] > max)
 		{
-			sum += arr[i];
-			cnt++;
+			max = arr[i];
 		}
 	}
 
-	if (sum == 0)
+	printf("Cac vi tri cua max : ");
+	for (int i = 0; i < 10; i++)
 	{
-		printf("Khong co so le trong mang!");
-	}
-	else
-	{
-		printf("SUM = %.2f", sum / (float) cnt);
+		if (arr[i] == max) 
+		{
+			printf("%d ", i);
+		}
 	}
 	return 0;
 }
