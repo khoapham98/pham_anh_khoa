@@ -1,25 +1,29 @@
 ﻿#include <stdio.h>
 #include <math.h>
 
+void print_odd(int a[]);
+
 int main()
 {
 	int arr[10] = { 0 };
-	int sum = 0, cnt = 0;
 
 	for (int i = 0; i < 10; i++)
 	{
 		printf("arr[%d] = ", i);
 		scanf_s("%d", &arr[i]);
-		if (arr[i] < 0)
-		{
-			arr[i] = 0;
-		}
 	}
+	print_odd(arr);
 
-	printf("New array : ");
+	return 0;
+}
+
+void print_odd(int a[])
+{
 	for (int i = 0; i < 10; i++)
 	{
-		printf("%d ", arr[i]);
+		if (a[i] % 2 != 0)
+		{
+			printf("%d ", a[i]);
+		}
 	}
-	return 0;
 }
