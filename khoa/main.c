@@ -1,27 +1,25 @@
 ﻿#include <stdio.h>
 #include <math.h>
 
-int CountSpace(char str[]);
+void Capital(char str[]);
 
 int main()
 {
-	char string[] = "Hello     World";
-
-	printf("Number of spaces : %d", CountSpace(string));
+	char string[] = "Hello World";
+	Capital(string);
+	printf("Number of spaces : %s", string);
 	return 0;
 }
 
-int CountSpace(char str[])
+void Capital(char str[])
 {
 	int cnt = 0, i = 0;
 	while (str[i] != 0)
 	{
-		if (str[i] == 32)
+		if (str[i] >= 97 && str[i] <= 122)
 		{
-			cnt++;
+			str[i] -= 32;
 		}
 		i++;
 	}
-
-	return cnt;
 }
