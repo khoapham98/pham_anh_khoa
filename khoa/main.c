@@ -1,31 +1,25 @@
 ﻿#include <stdio.h>
 #include <math.h>
 
-int findMax(int a[]);
+void swap(int *x, int *y);
 
 int main()
 {
-	int arr[10] = { 0 };
+	int a, b; 
+	printf("a = ");
+	scanf_s("%d", &a);
+	printf("b = ");
+	scanf_s("%d", &b);
 
-	for (int i = 0; i < 10; i++)
-	{
-		printf("arr[%d] = ", i);
-		scanf_s("%d", &arr[i]);
-	}
+	swap(&a, &b);
+	printf("a = %d\nb = %d", a, b);
 
-	printf("Max number is : %d", findMax(arr));
 	return 0;
 }
 
-int findMax(int a[])
+void swap(int *x, int *y)
 {
-	int max = a[0];
-	for (int i = 1; i < 10; i++)
-	{
-		if (a[i] > max)
-		{
-			max = a[i];
-		}
-	}
-	return max; 
+	int tmp = *x;
+	*x = *y;
+	*y = tmp;
 }
