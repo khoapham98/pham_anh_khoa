@@ -10,24 +10,16 @@ int main()
 	{
 		printf("arr[%d] = ", i);
 		scanf_s("%d", &arr[i]);
-	}
-
-	int max = arr[0];
-	for (int i = 1; i < 10; i++)
-	{
-		if (arr[i] > max)
+		if (arr[i] < 0)
 		{
-			max = arr[i];
+			arr[i] = 0;
 		}
 	}
 
-	printf("Cac vi tri cua max : ");
+	printf("New array : ");
 	for (int i = 0; i < 10; i++)
 	{
-		if (arr[i] == max) 
-		{
-			printf("%d ", i);
-		}
+		printf("%d ", arr[i]);
 	}
 	return 0;
 }
