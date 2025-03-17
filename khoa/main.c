@@ -1,25 +1,40 @@
 ﻿#include <stdio.h>
 #include <math.h>
 
-void swap(int *x, int *y);
+void sort(int a[]);
 
 int main()
 {
-	int a, b; 
-	printf("a = ");
-	scanf_s("%d", &a);
-	printf("b = ");
-	scanf_s("%d", &b);
+	int arr[10] = { 0 };
 
-	swap(&a, &b);
-	printf("a = %d\nb = %d", a, b);
+	for (int i = 0; i < 10; i++)
+	{
+		printf("arr[%d] = ", i);
+		scanf_s("%d", &arr[i]);
+	}
+
+	sort(arr);
+	printf("New array: ");
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", arr[i]);
+	}
 
 	return 0;
 }
 
-void swap(int *x, int *y)
+void sort(int a[])
 {
-	int tmp = *x;
-	*x = *y;
-	*y = tmp;
+	for (int i = 0; i < 9; i++)
+	{
+		for (int j = 0; j < 9 - i; j++)
+		{
+			if (a[j] > a[j + 1])
+			{
+				int tmp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = tmp;
+			}
+		}
+	}
 }
