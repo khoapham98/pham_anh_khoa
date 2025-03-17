@@ -1,7 +1,7 @@
 ﻿#include <stdio.h>
 #include <math.h>
 
-void print_odd(int a[]);
+void checkPrime(int a[]);
 
 int main()
 {
@@ -12,18 +12,31 @@ int main()
 		printf("arr[%d] = ", i);
 		scanf_s("%d", &arr[i]);
 	}
-	print_odd(arr);
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (arr[i] > 1)
+		{
+			checkPrime(arr[i]);
+		}
+	}
 
 	return 0;
 }
 
-void print_odd(int a[])
+void checkPrime(int num)
 {
-	for (int i = 0; i < 10; i++)
+	int isPrime = 1;
+	for (int i = 2; i <= sqrt(num); i++)
 	{
-		if (a[i] % 2 != 0)
+		if (num % i == 0)
 		{
-			printf("%d ", a[i]);
+			isPrime = 0;
+			break;
 		}
+	}
+	if (isPrime)
+	{
+		printf("%d ", num);
 	}
 }
