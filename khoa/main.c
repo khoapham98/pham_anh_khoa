@@ -1,27 +1,55 @@
 ﻿#include <stdio.h>
 
-void findAddress(char str[]);
+void findSubstr(char str[], char substr[]);
 
 int main()
 {
-	char string[] = "Hello World c";
+	char string[] = "aaaabaaaab";
+	char substring[] = "aaab";
 
-	findAddress(string);
+	int cnt = 0;
+	printf("Char |       Address\n-----+--------------------\n");
+	while (string[cnt] != 0)
+	{
+		printf("  %c  |  %p\n", string[cnt], (void*)&string[cnt]);
+		printf("-----+--------------------\n");
+		cnt++;
+	}
+
+	findSubstr(string, substring);
 
 	return 0;
 }
 
-void findAddress(char str[])
+void findSubstr(char str[], char substr[])
 {
 	int i = 0;
+	int address; 
+
 	while (str[i] != 0)
 	{
-		if (str[i] == 'c')
+		if (str[i] == substr[0])
 		{
-			printf("Address : %p", (void *) &str[i]);
-			return;
+			address = i;
+			int j = 1, check = 1, tmp = i + 1;
+			while (substr[j] != 0)
+			{
+				if (substr[j] != str[tmp])
+				{
+					check = 0;
+					break;
+				}
+				tmp++;
+				j++;
+			}
+			if (check)
+			{
+				printf("First letter's address of [%s] : % p", substr, (void*)&str[address]);
+				return;
+			}
 		}
 		i++;
 	}
-	printf("There is no letter 'c' in the string");
+
+	printf("There is no substring found in the string");
 }
