@@ -1,42 +1,27 @@
 ﻿#include <stdio.h>
 
-int CapFirstLetter(char str[]);
-int isWord(char ch);
+void findAddress(char str[]);
 
 int main()
 {
-	char string[] = "nguyen van a";
-	
-	CapFirstLetter(string);
+	char string[] = "Hello World c";
 
-	printf("New string : %s", string);
-	
+	findAddress(string);
+
 	return 0;
 }
 
-int CapFirstLetter(char str[])
+void findAddress(char str[])
 {
-	int cnt = 0, i = 0;
+	int i = 0;
 	while (str[i] != 0)
 	{
-		if (isWord(str[i]) && str[i] >= 97 && !isWord(str[i - 1]))
+		if (str[i] == 'c')
 		{
-			str[i] -= 32;
+			printf("Address : %p", (void *) &str[i]);
+			return;
 		}
 		i++;
 	}
-
-	return cnt;
-}
-
-int isWord(char ch)
-{
-	if ((ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122))
-	{
-		return 1; 
-	}
-	else
-	{
-		return 0;
-	}
+	printf("There is no letter 'c' in the string");
 }
