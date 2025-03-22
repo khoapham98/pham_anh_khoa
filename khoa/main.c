@@ -3,10 +3,10 @@
 
 int main()
 {
-	char str[] = "nguyen van a";
+	char str[] = "pham anh Khoa";
 
 	upperFirstLetter(str);
 	printf("%s", str);
-
+	 
 	return 0;
 }
