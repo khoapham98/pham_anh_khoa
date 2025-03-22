@@ -88,3 +88,14 @@ int countWord(char* str)
 	}
 	return cnt;
 }
+
+void upperFirstLetter(char* str)
+{
+	for (int i = 0; i < findSize(str); i++)
+	{
+		if (isWord(str[i]) && str[i] >= 'a' && !isWord(str[i - 1]))
+		{
+			str[i] -= 32;
+		}
+	}
+}
