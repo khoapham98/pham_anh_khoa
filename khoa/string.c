@@ -37,5 +37,18 @@ char* findSubstr(char* str, char* substr)
 		}
 		i++;
 	}
+}
 
+int countSpace(char* str)
+{
+	int i = 0, cnt = 0;
+	while (str[i] != 0)
+	{
+		if (str[i] == ' ')
+		{
+			cnt++;
+		}
+		i++;
+	}
+	return cnt;
 }
