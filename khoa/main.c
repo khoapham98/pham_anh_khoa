@@ -3,11 +3,9 @@
 
 int main()
 {
-	char str[] = "I Love C programming !!!";
+	char str[] = "     this is     a    string    ";
 
-	uppercase(str);
-
-	printf("%s", str);
+	printf("Number of words : %d", countWord(str));
 
 	return 0;
 }
