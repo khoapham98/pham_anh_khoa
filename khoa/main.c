@@ -5,8 +5,8 @@ int main()
 {
 	char str[] = "pham anh Khoa";
 
-	upperFirstLetter(str);
-	printf("%s", str);
+	char* ptr = CharAddress(str, 'a');
+	printf("%p", ptr);
 	 
 	return 0;
 }

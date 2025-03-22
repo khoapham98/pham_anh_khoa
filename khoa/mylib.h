@@ -9,4 +9,4 @@ void uppercase(char* str);
 int isWord(char ch);
 int countWord(char* str);
 void upperFirstLetter(char* str);
-
+char* CharAddress(char* str, char ch);
