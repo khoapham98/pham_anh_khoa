@@ -11,20 +11,6 @@ int findSize(char* str)
 	return cnt;
 }
 
-char* findCh(char* ptr, char ch)
-{
-	int i = 0;
-	for (int i = 0; i < findSize(ptr); i++)
-	{
-		if (*(ptr + i) == ch)
-		{
-			return ptr + i;
-		}
-		i++;
-	}
-	return 0;
-}
-
 char* findSubstr(char* str, char* substr)
 {
 	int i = 0;
@@ -98,4 +84,16 @@ void upperFirstLetter(char* str)
 			str[i] -= 32;
 		}
 	}
+}
+
+char* CharAddress(char* str, char ch)
+{
+	for (int i = 0; i < findSize(str); i++)
+	{
+		if (str[i] == ch) 
+		{
+			return str + i;
+		}
+	}
+	return 0;
 }
