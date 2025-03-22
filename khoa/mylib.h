@@ -6,3 +6,5 @@ char* findCh(char* ptr, char ch);
 char* findSubstr(char* ptr_str, char* ptr_sub);
 int countSpace(char* str);
 void uppercase(char* str);
+int isWord(char ch);
+int countWord(char* str);
