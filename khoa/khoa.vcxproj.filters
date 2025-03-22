@@ -21,9 +21,12 @@
     <ClCompile Include="toan.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="string.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="toan.h">
+    <ClInclude Include="mylib.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

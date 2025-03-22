@@ -1,10 +1,21 @@
 ﻿#include <stdio.h>
-#include "toan.h"
+#include "mylib.h"
 
 int main()
 {
-	printf("Tong = %d\n", cong(5, 10));
-	printf("Tich = %d", nhan(4, 5));
+	char str[] = "I Love c programming";
+	char substr[] = "programming";
 
+
+
+	int i = 0;
+	while (*(str + i) != 0)
+	{
+		printf("%c = %p\n",*(str + i), str + i);
+		i++;
+	}
+	char* C_address = findCh(str, 'c');
+	printf("Address of 'c' : %p", C_address);
+	//char* sub_address = findSubstr(str, substr);
 	return 0;
 }
