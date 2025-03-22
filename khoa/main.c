@@ -3,9 +3,10 @@
 
 int main()
 {
-	char str[] = "     this is     a    string    ";
+	char str[] = "nguyen van a";
 
-	printf("Number of words : %d", countWord(str));
+	upperFirstLetter(str);
+	printf("%s", str);
 
 	return 0;
 }
