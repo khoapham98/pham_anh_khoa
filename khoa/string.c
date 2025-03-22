@@ -63,3 +63,28 @@ void uppercase(char* str)
 		}
 	}
 }
+
+int isWord(char ch)
+{
+	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+	{
+		return 1; 
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+int countWord(char* str)
+{
+	int cnt = 0;
+	for (int i = 0; i < findSize(str); i++)
+	{
+		if (isWord(str[i]) && !isWord(str[i - 1]))
+		{
+			cnt++;
+		}
+	}
+	return cnt;
+}
