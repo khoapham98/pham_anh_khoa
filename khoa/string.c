@@ -52,3 +52,14 @@ int countSpace(char* str)
 	}
 	return cnt;
 }
+
+void uppercase(char* str)
+{
+	for (int i = 0; i < findSize(str); i++)
+	{
+		if (str[i] >= 'a' && str[i] <= 'z') 
+		{
+			str[i] -= 32;
+		}
+	}
+}
