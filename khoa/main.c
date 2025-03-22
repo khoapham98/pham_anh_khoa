@@ -4,9 +4,10 @@
 int main()
 {
 	char str[] = "pham anh Khoa";
+	char substr[] = "Khoa";
 
-	char* ptr = CharAddress(str, 'a');
-	printf("%p", ptr);
-	  
+	char* pos = SubAddress(str, substr);
+	printf("%p", pos);
+
 	return 0;
 }
