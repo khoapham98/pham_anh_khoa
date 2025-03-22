@@ -41,7 +41,9 @@ int countSpace(char* str)
 
 void uppercase(char* str)
 {
-	for (int i = 0; i < findSize(str); i++)
+	int size = findSize(str);
+
+	for (int i = 0; i < size; i++)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z') 
 		{
@@ -65,7 +67,9 @@ int isWord(char ch)
 int countWord(char* str)
 {
 	int cnt = 0;
-	for (int i = 0; i < findSize(str); i++)
+	int size = findSize(str);
+
+	for (int i = 0; i < size; i++)
 	{
 		if (isWord(str[i]) && !isWord(str[i - 1]))
 		{
@@ -77,7 +81,8 @@ int countWord(char* str)
 
 void upperFirstLetter(char* str)
 {
-	for (int i = 0; i < findSize(str); i++)
+	int size = findSize(str);
+	for (int i = 0; i < size; i++)
 	{
 		if (isWord(str[i]) && str[i] >= 'a' && !isWord(str[i - 1]))
 		{
@@ -88,12 +93,40 @@ void upperFirstLetter(char* str)
 
 char* CharAddress(char* str, char ch)
 {
-	for (int i = 0; i < findSize(str); i++)
+	int size = findSize(str);
+	for (int i = 0; i < size; i++)
 	{
 		if (str[i] == ch) 
 		{
 			return str + i;
 		}
 	}
+	return 0;
+}
+
+char* SubAddress(char* str, char* substr)
+{
+	int strSize = findSize(str);
+	int substrSize = findSize(substr);
+
+	for (int i = 0; i < strSize; i++)
+	{
+		int cnt = 0;
+		int tmp = i;
+		for (int j = 0; j < substrSize; j++) 
+		{
+			if (str[i] != substr[j])
+			{
+				break;
+			}
+			i++;
+			cnt++;
+		}
+		if (cnt == substrSize)
+		{
+			return str + tmp;
+		}
+	}
+
 	return 0;
 }
