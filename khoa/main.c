@@ -3,10 +3,11 @@
 
 int main()
 {
-	char str[] = "I Love c programming";
+	char str[] = "I Love C programming !!!";
 
-	int x = countSpace(str);
-	printf("Number of spaces : %d", x);
+	uppercase(str);
+
+	printf("%s", str);
 
 	return 0;
 }
