@@ -5,7 +5,8 @@ int main()
 {
 	char str[] = "I Love c programming";
 
-	printf("Number of characters in string : %d", findSize(str));
+	int x = countSpace(str);
+	printf("Number of spaces : %d", x);
 
 	return 0;
 }
