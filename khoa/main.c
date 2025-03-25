@@ -3,35 +3,46 @@
 #include <stdio.h>
 #include "mylib.h"
 
-struct phan_so
+typedef struct
 {
 	int tu;
 	int mau;
-};
+} phan_so;
 
-struct phan_so nhan_2_phan_so(struct phan_so a, struct phan_so b)
+phan_so nhan_2_phan_so(phan_so a, phan_so b)
 {
-	struct phan_so res;
+	phan_so res;
 	res.tu = a.tu * b.tu;
 	res.mau = a.mau * b.mau;
 
 	return res;
 }
 
+phan_so findMax(phan_so* ptr, int size)
+{
+	float max = ptr->tu / ptr->mau;
+	int index = 0;
+
+	for (int i = 1; i < size; i++)
+	{
+		float tmp = ptr[i].tu / (float) ptr[i].mau;
+		if (tmp > max)
+		{
+			max = tmp;
+			index = i;
+		}
+	}
+	phan_so res = ptr[index];
+
+	return res;
+}
+
 int main()
 {
-	struct phan_so A;
-	struct phan_so B;
+	phan_so arr[] = { {1,2}, {2,3}, {3,4}, {4,5}, {5,6} };
 
-	A.tu = 1;
-	A.mau = 2;
+	phan_so kq = findMax(arr, 5);
+	printf("Phan so lon nhat: %d/%d", kq.tu, kq.mau);
 
-	B.tu = 2;
-	B.mau = 3;
-
-	struct phan_so kq;
-	kq = nhan_2_phan_so(A, B);
-
-	printf("KET QUA : %d/%d", kq.tu, kq.mau);
 	return 0;
 }
