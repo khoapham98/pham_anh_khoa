@@ -5,54 +5,39 @@
 
 typedef struct
 {
-	int tu;
-	int mau;
-} phanSo;
+	char name[40];
+	int age;
+	char sex[5];
+	float mathScore, literScore, GPA;
+	int rank;
+} student;
 
-int findMin(phanSo x)
-{
-	if (abs(x.tu) < abs(x.mau))
-	{
-		return abs(x.tu);
-	}
-	else
-	{
-		return abs(x.mau);
-	}
-}
-
-phanSo rutGon(phanSo x)
-{
-	for (int i = findMin(x); i > 0; i--)
-	{
-		if ((x.tu % i == 0) && (x.mau % i == 0))
-		{
-			phanSo res;
-			res.tu = x.tu / i;
-			res.mau = x.mau / i;
-
-			if (res.tu > 0 && res.mau < 0)
-			{
-				res.tu = -res.tu;
-				res.mau = abs(res.mau);
-			}
-			else if (res.tu < 0 && res.mau < 0)
-			{
-				res.tu = abs(res.tu);
-				res.mau = abs(res.mau);
-			}
-
-			return res;
-		}
-	}
-}
+void enterInfo(student* list, int size);
 
 int main()
 {
-	phanSo a = { 1000000, -250000};
-	phanSo res = rutGon(a);
-
-	printf("Phan so : %d/%d\nRut gon : %d/%d", a.tu, a.mau, res.tu, res.mau);
+	student studentList[4] = { 0 };
+	enterInfo(studentList, 2);
 
 	return 0;
+}
+
+void enterInfo(student* list, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		printf("Enter student %d's information\n", i + 1);
+		printf("Name: ");
+		gets(list[i].name);
+		printf("Age: ");
+		scanf("%d", &list[i].age);
+		printf("Sex: ");
+		getchar();
+		gets(list[i].sex);
+		printf("math Score: ");
+		scanf("%f", &list[i].mathScore);
+		printf("Literature Score: ");
+		scanf("%f", &list[i].literScore);
+		getchar();
+	}
 }
