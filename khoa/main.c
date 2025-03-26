@@ -15,19 +15,21 @@ typedef struct
 void enterInfo(student* list, int size);
 void printStudent(student hs);
 void printHighestGPA(student* list, int size);
+void sortStudent(student* list, int size);
 
 int main()
 {
 	student studentList[4] = { 0 };
 	
-	enterInfo(studentList, 2);
+	enterInfo(studentList, 4);
 
-	for (int i = 0; i < 2; i++)
+	sortStudent(studentList, 4);
+
+	printf("Student list from high GPA to low GPA\n");
+	for (int i = 0; i < 4; i++)
 	{
 		printStudent(studentList[i]);
 	}
-
-	printHighestGPA(studentList, 2);
 
 	return 0;
 }
@@ -98,4 +100,20 @@ void printHighestGPA(student* list, int size)
 
 	printf("Student with highest GPA is : \n");
 	printStudent(list[index]);
+}
+
+void sortStudent(student* list, int size)
+{
+	for (int i = 0; i < size - 1; i++)
+	{
+		for (int j = 0; j < size - 1 - i; j++) 
+		{
+			if (list[j].GPA < list[j + 1].GPA)
+			{
+				student tmp = list[j];
+				list[j] = list[j + 1];
+				list[j + 1] = tmp;
+			}
+		}
+	}
 }
