@@ -9,50 +9,50 @@ typedef struct
 	int mau;
 } phanSo;
 
-phanSo congPhanSo(phanSo x, phanSo y)
+int findMin(phanSo x)
 {
-	phanSo res;
-	res.tu = x.tu + y.tu;
-	res.mau = x.mau + y.mau;
-
-	return res;
+	if (abs(x.tu) < abs(x.mau))
+	{
+		return abs(x.tu);
+	}
+	else
+	{
+		return abs(x.mau);
+	}
 }
 
-phanSo truPhanSo(phanSo x, phanSo y)
+phanSo rutGon(phanSo x)
 {
-	phanSo res;
-	res.tu = x.tu - y.tu;
-	res.mau = x.mau - y.mau;
+	for (int i = findMin(x); i > 0; i--)
+	{
+		if ((x.tu % i == 0) && (x.mau % i == 0))
+		{
+			phanSo res;
+			res.tu = x.tu / i;
+			res.mau = x.mau / i;
 
-	return res;
-}
+			if (res.tu > 0 && res.mau < 0)
+			{
+				res.tu = -res.tu;
+				res.mau = abs(res.mau);
+			}
+			else if (res.tu < 0 && res.mau < 0)
+			{
+				res.tu = abs(res.tu);
+				res.mau = abs(res.mau);
+			}
 
-phanSo nhanPhanSo(phanSo x, phanSo y)
-{
-	phanSo res;
-	res.tu = x.tu * y.tu;
-	res.mau = x.mau * y.mau;
-
-	return res;
-}
-
-phanSo chiaPhanSo(phanSo x, phanSo y)
-{
-	phanSo res;
-	res.tu = x.tu * y.mau;
-	res.mau = x.mau * y.tu;
-
-	return res;
+			return res;
+		}
+	}
 }
 
 int main()
 {
-	phanSo a = { 1, 3 }, b = { 4, 5 };
+	phanSo a = { 1000000, -250000};
+	phanSo res = rutGon(a);
 
-	printf("Tong: %d/%d\n", congPhanSo(a, b).tu, congPhanSo(a, b).mau);
-	printf("Hieu: %d/%d\n", truPhanSo(a, b).tu, truPhanSo(a, b).mau);
-	printf("Tich: %d/%d\n", nhanPhanSo(a, b).tu, nhanPhanSo(a, b).mau);
-	printf("Thuong: %d/%d\n", chiaPhanSo(a, b).tu, chiaPhanSo(a, b).mau);
-	
+	printf("Phan so : %d/%d\nRut gon : %d/%d", a.tu, a.mau, res.tu, res.mau);
+
 	return 0;
 }
