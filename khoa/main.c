@@ -13,15 +13,21 @@ typedef struct
 } student;
 
 void enterInfo(student* list, int size);
-void printList(student* list, int size);
+void printStudent(student hs);
+void printHighestGPA(student* list, int size);
 
 int main()
 {
 	student studentList[4] = { 0 };
 	
-	enterInfo(studentList, 4);
+	enterInfo(studentList, 2);
 
-	printList(studentList, 4);
+	for (int i = 0; i < 2; i++)
+	{
+		printStudent(studentList[i]);
+	}
+
+	printHighestGPA(studentList, 2);
 
 	return 0;
 }
@@ -43,16 +49,9 @@ void enterInfo(student* list, int size)
 		printf("Literature Score: ");
 		scanf("%f", &list[i].literScore);
 		getchar();
-	}
-}
 
-
-void printList(student* list, int size)
-{
-	printf("Student List:\n");
-	for (int i = 0; i < size; i++)
-	{
 		list[i].GPA = (list[i].mathScore + list[i].literScore) / 2;
+
 		if (list[i].GPA >= 8)
 		{
 			list[i].rank = 0;
@@ -69,13 +68,34 @@ void printList(student* list, int size)
 		{
 			list[i].rank = 3;
 		}
-
-		printf("%d. Name: %s, ", i + 1, list[i].name);
-		printf("age: %d, ", list[i].age);
-		printf("sex: %s, ", list[i].sex);
-		printf("math score: %.2f, ", list[i].mathScore);
-		printf("literature score: %.2f, ", list[i].literScore);
-		printf("GPA: %.2f, ", list[i].GPA);
-		printf("Rank: %d\n", list[i].rank);
 	}
+}
+
+void printStudent(student hs)
+{
+	printf("Name: %s, ", hs.name);
+	printf("age: %d, ", hs.age);
+	printf("sex: %s, ", hs.sex);
+	printf("math score: %.2f, ", hs.mathScore);
+	printf("literature score: %.2f, ", hs.literScore);
+	printf("GPA: %.2f, ", hs.GPA);
+	printf("Rank: %d\n", hs.rank);
+}
+
+void printHighestGPA(student* list, int size)
+{
+	int index = 0;
+	float max = list[0].GPA;
+
+	for (int i = 1; i < size; i++)
+	{
+		if (list[i].GPA > max)
+		{
+			max = list[i].GPA;
+			index = i;
+		}
+	}
+
+	printf("Student with highest GPA is : \n");
+	printStudent(list[index]);
 }
