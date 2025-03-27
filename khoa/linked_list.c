@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-node_t* createNode(int x)
-{
-	node_t* newNode = (node_t*) malloc(sizeof(node_t));
-	newNode->value = x;
-	newNode->previous_node = NULL;
-	
-	return newNode;
-}
+//node_t* createNode(int x)
+//{
+//	node_t* newNode = (node_t*) malloc(sizeof(node_t));
+//	newNode->value = x;
+//	newNode->previous_node = NULL;
+//	
+//	return newNode;
+//}
 
 void createLinklist(linked_list_t* linkedList)
 {
@@ -24,6 +24,9 @@ int getlen(linked_list_t* linkedList)
 
 void addNode(linked_list_t* linkedList, int x)
 {
-	linkedList->last_node = createNode(x);
+	node_t* newNode = (node_t*)malloc(sizeof(node_t));
+	newNode->value = x;
+	newNode->previous_node = linkedList->last_node;
+	linkedList->last_node = newNode;
 	linkedList->len++;
 }
