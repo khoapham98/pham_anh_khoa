@@ -14,3 +14,4 @@ typedef struct
 }linked_list_t;
 
 node_t* createNode(int x);
+void createLinklist(linked_list_t* linkedList);

@@ -10,3 +10,9 @@ node_t* createNode(int x)
 	
 	return newNode;
 }
+
+void createLinklist(linked_list_t* linkedList)
+{
+	linkedList->last_node = NULL;
+	linkedList->len = 0;
+}
