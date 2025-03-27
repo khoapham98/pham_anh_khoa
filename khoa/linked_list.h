@@ -15,3 +15,4 @@ typedef struct
 
 node_t* createNode(int x);
 void createLinklist(linked_list_t* linkedList);
+int getlen(linked_list_t* linkedList);

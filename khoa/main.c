@@ -7,5 +7,7 @@ int main()
 
 	createLinklist(&list);
 
+	printf("%d", getlen(&list));
+
 	return 0;
 }

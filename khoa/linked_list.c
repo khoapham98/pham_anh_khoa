@@ -16,3 +16,8 @@ void createLinklist(linked_list_t* linkedList)
 	linkedList->last_node = NULL;
 	linkedList->len = 0;
 }
+
+int getlen(linked_list_t* linkedList)
+{
+	return linkedList->len;
+}
