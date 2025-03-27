@@ -21,3 +21,9 @@ int getlen(linked_list_t* linkedList)
 {
 	return linkedList->len;
 }
+
+void addNode(linked_list_t* linkedList, int x)
+{
+	linkedList->last_node = createNode(x);
+	linkedList->len++;
+}
