@@ -1,9 +1,11 @@
 #pragma once
-typedef struct
+struct node_t
 {
 	int value;
 	struct node_t* previous_node;
-}node_t;
+};
+
+typedef struct node_t node_t;
 
 typedef struct
 {
