@@ -10,7 +10,9 @@ typedef struct node node;
 typedef struct 
 {
 	node* head;
+	node* tail;
 	int len;
 }linked_list;
 
 void createLinkedList(linked_list* ll);
+void pushbackNode(linked_list* ll, int val);
