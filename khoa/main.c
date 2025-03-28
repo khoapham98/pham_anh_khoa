@@ -25,7 +25,7 @@ int main()
 
 	insertNode(&list, 45, 7);
 
-	printf("Linked List length: %d", getLen(&list));
+	removelastNode(&list);
 
 	return 0;
 }

@@ -68,3 +68,22 @@ void insertNode(linked_list* ll, int val, int index)
 	newNode->next = curNode;
 	ll->len++;
 }
+
+void removelastNode(linked_list* ll)
+{
+	int size = getLen(ll);
+
+	node* curNode = NULL;
+	node* nextNode = ll->head;
+
+	for (int i = 0; i < size - 1; i++)
+	{
+		curNode = nextNode;
+		nextNode = curNode->next;
+	}
+	
+	free(ll->tail);
+	curNode->next = NULL;
+	ll->tail = curNode;
+	ll->len--;
+}
