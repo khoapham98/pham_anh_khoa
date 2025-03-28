@@ -16,3 +16,4 @@ typedef struct
 
 void createLinkedList(linked_list* ll);
 void pushbackNode(linked_list* ll, int val);
+int getLen(linked_list* ll);

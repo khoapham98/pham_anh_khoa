@@ -26,3 +26,8 @@ void pushbackNode(linked_list* ll, int val)
 	ll->tail = newNode;
 	ll->len++;
 }
+
+int getLen(linked_list* ll)
+{
+	return ll->len;
+}

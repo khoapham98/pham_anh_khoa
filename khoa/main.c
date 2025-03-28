@@ -16,5 +16,7 @@ int main()
 
 	pushbackNode(&list, 40);
 
+	printf("Linked List length: %d", getLen(&list));
+
 	return 0;
 }
