@@ -124,3 +124,8 @@ int searchNode(linked_list* ll, int val)
 
 	return pos;
 }
+
+int getTailVal(linked_list* ll)
+{
+	return ll->tail->value;
+}

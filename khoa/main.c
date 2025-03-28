@@ -18,7 +18,7 @@ int main()
 
 	pushbackNode(&list, 50);
 
-	int pos = searchNode(&list, 15);
-
+	int res = getTailVal(&list);
+	
 	return 0;
 }
