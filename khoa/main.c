@@ -18,7 +18,7 @@ int main()
 
 	pushbackNode(&list, 50);
 
-	int res = getTailVal(&list);
-	
+	int res = getNodeVal(&list, 4);
+
 	return 0;
 }

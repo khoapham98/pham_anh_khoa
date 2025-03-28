@@ -129,3 +129,16 @@ int getTailVal(linked_list* ll)
 {
 	return ll->tail->value;
 }
+
+int getNodeVal(linked_list* ll, int index)
+{
+	node* curNode = NULL;
+	node* nextNode = ll->head;
+
+	for (int i = 0; i <= index; i++)
+	{
+		curNode = nextNode;
+		nextNode = curNode->next;
+	}
+	return curNode->value;
+}
