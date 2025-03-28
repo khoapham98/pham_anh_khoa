@@ -67,11 +67,19 @@ void insertNode(linked_list* ll, int val, int index)
 	prevNode->next = newNode;
 	newNode->next = curNode;
 	ll->len++;
+
+	printf("You have inserted successfully !\n");
 }
 
 void removelastNode(linked_list* ll)
 {
 	int size = getLen(ll);
+
+	if (size == 0)
+	{
+		printf("There is no node in the linked list yet !\n");
+		return;
+	}
 
 	node* curNode = NULL;
 	node* nextNode = ll->head;
@@ -86,12 +94,29 @@ void removelastNode(linked_list* ll)
 	curNode->next = NULL;
 	ll->tail = curNode;
 	ll->len--;
+
+	printf("You have removed last node successfully !\n");
 }
 
 void removeIndexNode(linked_list* ll, int index)
 {
 	node* curNode = NULL;
 	node* nextNode = ll->head;
+
+	if (ll->len == 0)
+	{
+		printf("There is no node in the linked list yet !\n");
+		return;
+	}
+
+	if (index == 0)
+	{
+		curNode = nextNode;
+		ll->head = curNode->next;
+		ll->len--;
+		free(nextNode);
+		return;
+	}
 
 	for (int i = 0; i < index; i++)
 	{
@@ -101,6 +126,8 @@ void removeIndexNode(linked_list* ll, int index)
 	curNode->next = nextNode->next;
 	free(nextNode);
 	ll->len--;
+
+	printf("You have remove node successfully !\n");
 }
 
 int searchNode(linked_list* ll, int val)
@@ -132,6 +159,12 @@ int getTailVal(linked_list* ll)
 
 int getNodeVal(linked_list* ll, int index)
 {
+	if (index >= getLen(ll))
+	{
+		printf("Index NOT FOUND !\n");
+		return 0;
+	}
+
 	node* curNode = NULL;
 	node* nextNode = ll->head;
 
@@ -159,4 +192,19 @@ void deleteAll(linked_list* ll)
 
 	ll->head = NULL;
 	ll->tail = NULL;
+	printf("You have deleted all nodes successfully !\n");
+}
+
+void printAllNodeVal(linked_list* ll)
+{
+	int cnt = 1;
+	for (node* i = ll->head; i != NULL; i = i->next)
+	{
+		printf("Node %d | Node address: %p ; Value: %d ; Pointer: %p\n", cnt, i, i->value, i->next);
+		cnt++;
+	}
+	if (ll->len == 0)
+	{
+		printf("There is no node in the linked list yet !\n");
+	}
 }
