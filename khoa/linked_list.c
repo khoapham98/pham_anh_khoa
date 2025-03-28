@@ -142,3 +142,21 @@ int getNodeVal(linked_list* ll, int index)
 	}
 	return curNode->value;
 }
+
+void deleteAll(linked_list* ll)
+{
+	node* curNode = NULL;
+	node* nextNode = ll->head;
+	int size = getLen(ll);
+
+	for (int i = 0; i < size; i++)
+	{
+		curNode = nextNode;
+		nextNode = curNode->next;
+		free(curNode);
+		ll->len--;
+	}
+
+	ll->head = NULL;
+	ll->tail = NULL;
+}

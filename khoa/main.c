@@ -18,7 +18,7 @@ int main()
 
 	pushbackNode(&list, 50);
 
-	int res = getNodeVal(&list, 4);
+	deleteAll(&list);
 
 	return 0;
 }

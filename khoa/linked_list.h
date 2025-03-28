@@ -23,3 +23,4 @@ void removeIndexNode(linked_list* ll, int index);
 int searchNode(linked_list* ll, int val);
 int getTailVal(linked_list* ll);
 int getNodeVal(linked_list* ll, int index);
+void deleteAll(linked_list* ll);
