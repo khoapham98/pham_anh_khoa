@@ -16,6 +16,15 @@ int main()
 
 	pushbackNode(&list, 40);
 
+
+	insertNode(&list, 25, 2);
+
+	insertNode(&list, 15, 1);
+
+	insertNode(&list, 5, 0);
+
+	insertNode(&list, 45, 7);
+
 	printf("Linked List length: %d", getLen(&list));
 
 	return 0;
