@@ -19,3 +19,4 @@ void pushbackNode(linked_list* ll, int val);
 int getLen(linked_list* ll);
 void insertNode(linked_list* ll, int val, int index);
 void removelastNode(linked_list* ll);
+void removeIndexNode(linked_list* ll, int index);

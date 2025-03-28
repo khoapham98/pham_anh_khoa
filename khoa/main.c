@@ -16,16 +16,9 @@ int main()
 
 	pushbackNode(&list, 40);
 
+	pushbackNode(&list, 50);
 
-	insertNode(&list, 25, 2);
-
-	insertNode(&list, 15, 1);
-
-	insertNode(&list, 5, 0);
-
-	insertNode(&list, 45, 7);
-
-	removelastNode(&list);
+	removeIndexNode(&list, 2);
 
 	return 0;
 }

@@ -87,3 +87,18 @@ void removelastNode(linked_list* ll)
 	ll->tail = curNode;
 	ll->len--;
 }
+
+void removeIndexNode(linked_list* ll, int index)
+{
+	node* curNode = NULL;
+	node* nextNode = ll->head;
+
+	for (int i = 0; i < index; i++)
+	{
+		curNode = nextNode;
+		nextNode = curNode->next;
+	}
+	curNode->next = nextNode->next;
+	free(nextNode);
+	ll->len--;
+}
