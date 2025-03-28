@@ -102,3 +102,25 @@ void removeIndexNode(linked_list* ll, int index)
 	free(nextNode);
 	ll->len--;
 }
+
+int searchNode(linked_list* ll, int val)
+{
+	int pos = -1;
+
+	node* curNode = NULL;
+	node* nextNode = ll->head;
+	int size = getLen(ll);
+
+	for (int i = 0; i < size; i++)
+	{
+		curNode = nextNode;
+		if (curNode->value == val)
+		{
+			pos = i;
+			break;
+		}
+		nextNode = curNode->next;
+	}
+
+	return pos;
+}

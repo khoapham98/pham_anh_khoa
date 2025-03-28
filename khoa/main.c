@@ -18,7 +18,7 @@ int main()
 
 	pushbackNode(&list, 50);
 
-	removeIndexNode(&list, 2);
+	int pos = searchNode(&list, 15);
 
 	return 0;
 }
