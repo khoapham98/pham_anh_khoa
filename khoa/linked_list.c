@@ -208,3 +208,28 @@ void printAllNodeVal(linked_list* ll)
 		printf("There is no node in the linked list yet !\n");
 	}
 }
+
+void reverseLinkedList(linked_list* ll)
+{
+	int size = getLen(ll);
+	if (!size)
+	{
+		printf("There is no node in the linked list yet !\n");
+		return;
+	}
+
+	node* preN = NULL;
+	node* curN = ll->head;
+	node* nextN = curN->next;
+
+	ll->tail = curN;
+	for (int i = 0; i < size - 1; i++)
+	{
+		curN->next = preN;
+		preN = curN;
+		curN = nextN;
+		nextN = curN->next;
+	}
+	ll->head = curN;
+	ll->head->next = preN;
+}

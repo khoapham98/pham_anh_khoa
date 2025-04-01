@@ -69,6 +69,9 @@ int main()
 		case 10:
 			printAllNodeVal(&list);
 			break;
+		case 11:
+			reverseLinkedList(&list);
+			break;
 		default:
 			check = 0;
 		}
@@ -90,5 +93,6 @@ void menu()
 	printf("8.  Print node's value at the index position\n");
 	printf("9.  Remove all nodes\n");
 	printf("10. Print all nodes information\n");
+	printf("11. Reverse linked list\n");
 	printf("#. EXIT\n");
 }
