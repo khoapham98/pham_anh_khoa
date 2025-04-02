@@ -1,98 +1,217 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+﻿#include <stdio.h>
+#include <math.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "linked_list.h"
-
+int ControlServo();
+int elevator();
+float estimateKm();
+int calculateKm();
+int getlen(char* str);
 void menu();
 
 int main()
 {
-	linked_list list;
-	createLinkedList(&list);
-
+	int choice;
 	int check = 1;
+
 	menu();
-	while (check)
+	while (check == 1)
 	{
-		int choice;
-		printf("\nUser choice: ");
-		scanf("%d", &choice);
-		
+		printf("Enter feature: ");
+		scanf_s("%d", &choice);
+
 		switch (choice)
 		{
-		case 1: 
-			printf("Node's value: ");
-			int data;
-			scanf("%d", &data);
-			pushbackNode(&list, data);
+		case 1:
+			int angle = ControlServo();
+			printf("Servo angle : %d\n", angle);
 			break;
-		case 2: 
-			printf("Number of nodes: %d\n", getLen(&list));
+		case 2:
+			int power = elevator();
+			if (power == -1)
+			{
+				printf("WARNING : OVERWEIGHT !!!\n");
+			}
+			else
+			{
+				printf("Power needed for elevator: %dW\n", power);
+			}
 			break;
 		case 3:
-			printf("Enter node's value you want to insert: ");
-			int val;
-			scanf("%d", &val);
-			printf("Enter node's index you want to insert node: ");
-			int index;
-			scanf("%d", &index);
-			insertNode(&list, val, index);
+			float y = estimateKm();
+			printf("The estimate km that the car can go : %.2f\n", y);
 			break;
-		case 4: 
-			removelastNode(&list);
-			break;
-		case 5:
-			printf("Enter node's index you want to remove: ");
-			int pos;
-			scanf("%d", &pos);
-			removeIndexNode(&list, pos);
-			break;
-		case 6:
-			printf("Enter node's value you want to search: ");
-			int v;
-			scanf("%d", &v);
-			printf("Node's index: %d\n", searchNode(&list, v));
-			break;
-		case 7:
-			printf("Last node's value is: %d\n", getTailVal(&list));
-			break;
-		case 8:
-			printf("Enter node's index you want to get value: ");
-			int x;
-			scanf("%d", &x);
-			printf("Value of node #%d : %d\n", x, getNodeVal(&list, x));
-			break;
-		case 9:
-			deleteAll(&list);
-			break;
-		case 10:
-			printAllNodeVal(&list);
-			break;
-		case 11:
-			reverseLinkedList(&list);
+		case 4:
+			int km = calculateKm();
+			printf("The actual km that the car can go: %d\n", km);
 			break;
 		default:
 			check = 0;
+			break;
 		}
 	}
-
-	return 0;
 }
 
 void menu()
 {
-	printf("================= MENU ======================\n");
-	printf("1.  Add node at the end of linked list\n");
-	printf("2.  Print number of nodes\n");
-	printf("3.  Insert node into the index position of linked list\n");
-	printf("4.  Remove last node of the list\n");
-	printf("5.  Remove node at the index position of the list\n");
-	printf("6.  Find node's position in linked list\n");
-	printf("7.  Print the last node's value\n");
-	printf("8.  Print node's value at the index position\n");
-	printf("9.  Remove all nodes\n");
-	printf("10. Print all nodes information\n");
-	printf("11. Reverse linked list\n");
-	printf("#. EXIT\n");
+	printf("===== MENU =====\n");
+	printf("1. Control your servo\n");
+	printf("2. Calculate power needed for elevator\n");
+	printf("3. Estimate the km that can go\n");
+	printf("4. Calculate the actual km that can go\n");
+}
+
+int ControlServo()
+{
+	float level;
+
+	do
+	{
+		printf("Enter level : ");
+		scanf_s("%f", &level);
+	} while (level > 10 || level < 0);
+
+	int servo_angle;
+	int nguyen = level;
+	float thapPhan = level - nguyen;
+
+	servo_angle = nguyen * 18 + thapPhan * 18;
+	return servo_angle;
+}
+
+int elevator()
+{
+	int recent, next, weight;
+	printf("Recent floor: ");
+	scanf_s("%d", &recent);
+	printf("The floor needs: ");
+	scanf_s("%d", &next);
+	printf("weight: ");
+	scanf_s("%d", &weight);
+
+	if (weight > 700)
+	{
+		return -1;
+	}
+	else if (recent < next)
+	{
+		int watt = 10;
+		int tmp = next - recent;
+		int res = tmp * (weight * watt);
+		return res;
+	}
+	else if (recent > next)
+	{
+		int watt = 2;
+		int tmp = recent - next;
+		return tmp * (weight * watt);
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+float estimateKm()
+{
+	int pin, k;
+	printf("Pin : ");
+	scanf_s("%d", &pin);
+	printf("k : ");
+	scanf_s("%d", &k);
+
+	switch (k)
+	{
+	case 1:
+		return (float)5 * pin;
+	case 2:
+		return (float)4 * pin;
+	case 3:
+		return 2.15 * (float)pin;
+	case 4:
+		return 3.3 * pin;
+	default:
+		break;
+	}
+}
+
+int getlen(char* str)
+{
+	int i = 0;
+	while (str[i] != 0)
+	{
+		i++;
+	}
+	return i;
+}
+
+int calculateKm()
+{
+	char str[1000];
+
+	printf("Enter km of the journey: ");
+	getchar();
+	gets(str);
+
+	int km = 0;
+	int pin = 100;
+	int pinUse = 0;
+	int size = getlen(str);
+	int i = 0;
+
+	while (i < size)
+	{
+		int num = 0;
+		int cnt = 0;
+		int am = 0;
+		while (str[cnt + i] != ' ' && str[cnt + i] != 0)
+		{
+			if (str[cnt + i] == '-')
+			{
+				am = 1;
+				cnt++;
+				continue;
+			}
+
+			if (cnt > 0)
+			{
+				num *= 10;
+			}
+			num += str[cnt + i] - 48;
+			cnt++;
+		}
+
+		if (num == 0)
+		{
+			pin += 25;
+		}
+		else if (am == 1)
+		{
+			pin += (num / 10);
+			if (pin > 100)
+			{
+				pin = 100;
+			}
+			km += num;
+		}
+		else
+		{
+			pinUse = round(num / 2.15);
+
+			if (pinUse >= pin)
+			{
+				km += pin * 2.15;
+				pin = 0;
+			}
+			else
+			{
+				km += num;
+				pin -= pinUse;
+			}
+		}
+
+		i += cnt;
+		i++;
+	}
+
+	return km;
 }
