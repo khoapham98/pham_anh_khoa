@@ -35,7 +35,7 @@ int main()
 
 	string_to_hocsinh(arr, ds);
 
-	inHocsinh(ds, 5);
+	tinhDTB(ds, 5);
 
 	return 0;
 }
@@ -165,4 +165,22 @@ void string_to_hocsinh(char** s, hocsinh_t* ds)
 			}
 		}
 	}
+}
+
+void tinhDTB(hocsinh_t* ds, int size)
+{
+	int max = 0;
+	int index = 0;
+	for (int i = 0; i < size; i++)
+	{
+		ds[i].DTB = (ds[i].diemtoan + ds[i].diemvan) / 2;
+		if (ds[i].DTB > max)
+		{
+			max = ds[i].DTB;
+			index = i;
+		}
+	}
+
+	printf("Hoc sinh co DTB cao nhat la : \n");
+	inHocsinh(&ds[index], 1);
 }
