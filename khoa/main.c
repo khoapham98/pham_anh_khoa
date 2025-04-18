@@ -25,10 +25,11 @@ void file_to_string(FILE* file, char** str);
 void string_to_hocsinh(char** s, hocsinh_t* ds);
 void tinhDTB(hocsinh_t* ds, int size);
 void sapxep(hocsinh_t* ds, int size);
+void hocsinh_to_file(hocsinh_t* ds, int size, FILE* file);
 
 int main()
 {
-	FILE* fptr = fopen("D:/workspace/C/imic/practices/DanhSachHocSinh1.csv", "r+");
+	FILE* fptr = fopen("D:/workspace/C/imic/practices/DanhSachHocSinh1.csv", "r");
 
 	char* arr[5];
 	hocsinh_t ds[5] = { 0 };
@@ -43,6 +44,14 @@ int main()
 
 	printf("\nDanh sach hoc sinh co DTB cao den thap : \n");
 	inHocsinh(ds, 5);
+
+	fclose(fptr);
+
+	fptr = fopen("D:/workspace/C/imic/practices/DanhSachHocSinh2.csv", "w");
+
+	hocsinh_to_file(ds, 5, fptr);
+
+	fclose(fptr);
 
 	return 0;
 }
@@ -206,4 +215,56 @@ void sapxep(hocsinh_t* ds, int size)
 			}
 		}
 	}
+}
+
+void hocsinh_to_file(hocsinh_t* ds, int size, FILE* tofile)
+{
+	char age[3] = { 0 };
+	char diemtoan[3] = { 0 };
+	char diemvan[3] = { 0 };
+
+	for (int i = 0; i < 5; i++)
+	{
+		int tmpAge = ds[i].tuoi;
+		int tmpMath = ds[i].diemtoan;
+		int tmpLiter = ds[i].diemvan;
+
+		for (int j = 1; j >= 0; j--)
+		{
+			age[j] = (tmpAge % 10) + 48;
+			tmpAge /= 10;
+			diemtoan[j] = (tmpMath % 10) + 48;
+			tmpMath /= 10;
+			diemvan[j] = (tmpLiter % 10) + 48;
+			tmpLiter /= 10;
+		}
+
+		fputs(ds[i].ten, tofile);
+		fputs(",", tofile);
+		fputs(age, tofile);
+		fputs(",", tofile);
+		fputs(gtinh[ds[i].gioitinh], tofile);
+		fputs(",", tofile);
+		if (diemtoan[0] == '0')
+		{
+			fputs(diemtoan + 1, tofile);
+		}
+		else
+		{
+			fputs(diemtoan, tofile);
+		}
+		fputs(",", tofile);
+
+		if (diemvan[0] == '0')
+		{
+			fputs(diemvan + 1, tofile);
+		}
+		else
+		{
+			fputs(diemvan, tofile);
+		}
+		fputs("\n", tofile);
+	}
+
+	printf("\nLuu danh sach vao file thanh cong!\n");
 }
