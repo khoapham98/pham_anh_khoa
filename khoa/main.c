@@ -8,6 +8,7 @@ typedef enum
 	NAM, 
 	NU
 } sex_t;
+char* gtinh[] = { "NAM", "NU" };
 
 typedef struct
 {
@@ -23,6 +24,7 @@ void inHocsinh(hocsinh_t* ds, int size);
 void file_to_string(FILE* file, char** str);
 void string_to_hocsinh(char** s, hocsinh_t* ds);
 void tinhDTB(hocsinh_t* ds, int size);
+void sapxep(hocsinh_t* ds, int size);
 
 int main()
 {
@@ -37,6 +39,11 @@ int main()
 
 	tinhDTB(ds, 5);
 
+	sapxep(ds, 5);
+
+	printf("\nDanh sach hoc sinh co DTB cao den thap : \n");
+	inHocsinh(ds, 5);
+
 	return 0;
 }
 
@@ -46,7 +53,7 @@ void inHocsinh(hocsinh_t* ds, int size)
 	{
 		printf("%d. ten : %s, ", i + 1, ds[i].ten);
 		printf("tuoi : %d, ", ds[i].tuoi);
-		printf("gioi tinh: %d, ", ds[i].gioitinh);
+		printf("gioi tinh: %s, ", gtinh[ds[i].gioitinh]);
 		printf("diem toan : %.2f, ", ds[i].diemtoan);
 		printf("diem van : %.2f, ", ds[i].diemvan);
 		printf("DTB: %.2f\n", ds[i].DTB);
@@ -183,4 +190,20 @@ void tinhDTB(hocsinh_t* ds, int size)
 
 	printf("Hoc sinh co DTB cao nhat la : \n");
 	inHocsinh(&ds[index], 1);
+}
+
+void sapxep(hocsinh_t* ds, int size)
+{
+	for (int i = 0; i < size - 1; i++)
+	{
+		for (int j = 0; j < size - 1 - i; j++)
+		{
+			if (ds[j].DTB < ds[j + 1].DTB)
+			{
+				hocsinh_t tmp = ds[j];
+				ds[j] = ds[j + 1];
+				ds[j + 1] = tmp;
+			}
+		}
+	}
 }
