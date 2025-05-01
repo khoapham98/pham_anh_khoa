@@ -11,6 +11,12 @@
 
 #define TONG(a, b) (a + b)
 
+#define VERSION 11
+
+#if VERSION < 5
+#error "Phien ban khong hop le"
+#endif 
+
 int main()
 {
 	printf("Day la dong thu %d trong file ten: %s\n", __LINE__, __FILE__);
