@@ -3,53 +3,22 @@
 #include <Windows.h>
 #include <string.h>
 
-HANDLE readPipe, writePipe; 
-HANDLE mutex; 
+#define TEN "Anh Khoa"
+#define TUOI 21
 
-DWORD WINAPI myThread(LPVOID lpParameter)
-{
-	WaitForSingleObject(mutex, INFINITE);
-	int data2R;
-	printf("Du lieu trong pipe: ");
-	while (1)
-	{
-		DWORD bytesRead; 
-		if (ReadFile(readPipe, &data2R, sizeof(data2R), &bytesRead, NULL))
-		{
-			printf("%d ", data2R);
-		}
-		else
-		{
-			printf("Khong the doc du lieu trong pipe!\n");
-			return 0;
-		}
-	}
-	printf("Doc du lieu thanh cong!\n");
-	
-	ReleaseMutex(mutex);
-}
+#define GIOI_THIEU(s, x)  printf("Hello my name is %s\n", s);\
+							printf("I'm %d years old\n", x);
+
+#define TONG(a, b) (a + b)
 
 int main()
 {
-	HANDLE thread = CreateThread(NULL, 0, myThread, NULL, 0, NULL);
-	mutex = CreateMutexA(NULL, 1, NULL);
+	printf("Day la dong thu %d trong file ten: %s\n", __LINE__, __FILE__);
+	printf("Bay gio la %s, %s\n", __TIME__, __DATE__);
 
-	if (CreatePipe(&readPipe, &writePipe, NULL, 0))
-	{
-		printf("Tao pipe thanh cong!\r\n");
-	}
-	
-	int data[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	for (int i = 0; i < 10; i++)
-	{
-		DWORD bytesWritten; 
-		if (!WriteFile(writePipe, &data[i], sizeof(data[i]), &bytesWritten, NULL))
-		{
-			printf("Ghi du lieu vao pipe that bai!\n");
-			break;
-		}
-	}
-	printf("Ghi du lieu vao pipe thanh cong!\n");
-	ReleaseMutex(mutex);
+	GIOI_THIEU(TEN, TUOI)
+
+	printf("TONG: %c\n", TONG('0', '1'));
+
 	return 0;
 }
