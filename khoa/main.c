@@ -3,28 +3,45 @@
 #include <Windows.h>
 #include <string.h>
 
-#define TEN "Anh Khoa"
-#define TUOI 21
+#include <stdio.h>
+#include <string.h> 
+#include <stdlib.h>
 
-#define GIOI_THIEU(s, x)  printf("Hello my name is %s\n", s);\
-							printf("I'm %d years old\n", x);
 
-#define TONG(a, b) (a + b)
+char* convertToTitle(int columnNumber) {
+    char ch[] = { 0 , 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+                 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
-#define VERSION 11
+    int num = columnNumber;
 
-#if VERSION < 5
-#error "Phien ban khong hop le"
-#endif 
+    char* str = (char*)calloc(sizeof(char), 10);
 
+    int i = 9;
+    int time = 26;
+    while (num > 0)
+    {
+        int du = num % 26;
+        if (du == 0)
+        {
+            du = 26; 
+            num = num / 26 - 1; 
+        }
+        else
+        {
+            num /= 26;
+        }
+        str[--i] = ch[du];
+    }
+
+    str += i;
+    return str;
+}
 int main()
 {
-	printf("Day la dong thu %d trong file ten: %s\n", __LINE__, __FILE__);
-	printf("Bay gio la %s, %s\n", __TIME__, __DATE__);
+    char* res = convertToTitle(702);
 
-	GIOI_THIEU(TEN, TUOI)
+    printf("%s\n", res);
 
-	printf("TONG: %c\n", TONG('0', '1'));
-
-	return 0;
+    return 0;
 }
