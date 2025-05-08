@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="hinh_hoc.cpp" />
     <ClCompile Include="linked_list.c" />
-    <ClCompile Include="main.c" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="string.c" />
     <ClCompile Include="toan.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="hinh_hoc.h" />
     <ClInclude Include="linked_list.h" />
     <ClInclude Include="mylib.h" />
   </ItemGroup>
