@@ -4,27 +4,15 @@
 int main()
 {
     phan_so a(2, 3);
-    phan_so b(1, 3);
-    phan_so c(4, 4);
-    phan_so d(8, 8); 
+    phan_so b(1, 4);
 
-    if (a > b)
-    {
-        printf("Phan so a lon hon phan so b\n"); 
-    }
-    else if (a < b)
-    {
-        printf("Phan so a nho hon phan so b\n"); 
-    }
+    printf("%d/%d + %d/%d = %d/%d\n", a.tu, a.mau, b.tu, b.mau, (a + b).tu, (a + b).mau);
 
-    if (c >= d)
-    {
-        printf("Phan so c lon hon hoac bang phan so d\n"); 
-    }
-    else if (c <= d)
-    {
-        printf("Phan so c nho hon hoac bang phan so d\n"); 
-    }
+    printf("%d/%d - %d/%d = %d/%d\n", a.tu, a.mau, b.tu, b.mau, (a - b).tu, (a - b).mau);
+
+    printf("%d/%d * %d/%d = %d/%d\n", a.tu, a.mau, b.tu, b.mau, (a * b).tu, (a * b).mau);
+
+    printf("%d/%d : %d/%d = %d/%d\n", a.tu, a.mau, b.tu, b.mau, (a / b).tu, (a / b).mau);
 
     return 0;
 }

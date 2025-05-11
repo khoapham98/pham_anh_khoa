@@ -15,8 +15,11 @@ public:
         mau = b;
     }
 
-    phan_so operator*(phan_so b);
+    void rutgon();
     phan_so operator+(phan_so b);
+    phan_so operator-(phan_so b);
+    phan_so operator*(phan_so b);
+    phan_so operator/(phan_so b);
     bool operator>(phan_so b);
     bool operator<(phan_so b);
     bool operator>=(phan_so b);
