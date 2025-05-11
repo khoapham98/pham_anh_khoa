@@ -128,7 +128,7 @@ bool phan_so::operator==(phan_so b)
 	}
 }
 
-int* mang_int::operator[](int index)
+int& mang_int::operator[](int index)
 {
-	return &ptr[index]; 
+	return ptr[index]; 
 }

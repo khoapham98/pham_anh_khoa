@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 class phan_so
 {
@@ -42,5 +43,11 @@ public:
         ptr = (int*) malloc(sizeof(int) * size); 
     }
 
-    int* operator[](int index);
+    ~mang_int()
+    {
+        free(ptr); 
+        printf("\nVung nho da duoc giai phong!\n"); 
+    }
+
+    int& operator[](int index);
 };
