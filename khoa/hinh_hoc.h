@@ -50,5 +50,6 @@ public:
     }
 
     void xoaPhanTu(int index); 
+    void themPhanTu(int val, int index);
     int& operator[](int index);
 };

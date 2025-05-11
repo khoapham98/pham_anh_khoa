@@ -155,6 +155,29 @@ void mang_int::xoaPhanTu(int index)
 			tmp_ptr[i] = ptr[++j]; 
 		}
 	}
+	free(ptr); 
+	ptr = tmp_ptr; 
+	size = newSize; 
+}
+
+void mang_int::themPhanTu(int val, int index)
+{
+	int newSize = size + 1; 
+	int* tmp_ptr = (int*)malloc(sizeof(int) * newSize);
+	
+	for (int i = 0, j = 0; j < size; i++)
+	{
+		if (i != index)
+		{
+			tmp_ptr[i] = ptr[j++];
+		}
+		else
+		{ 
+			tmp_ptr[i] = val; 
+		}
+	}
+
+	free(ptr); 
 	ptr = tmp_ptr; 
 	size = newSize; 
 }

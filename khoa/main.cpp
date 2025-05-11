@@ -2,20 +2,20 @@
 
 int main()
 {
-    mang_int a(10); 
+    mang_int a(5); 
     for (int i = 0; i < a.size; i++)
     {
         a[i] = i + 1;
     }
 
-    printf("Truoc khi xoa (size = %d): \n", a.size);
+    printf("Truoc khi them (size = %d): \n", a.size);
     for (int i = 0; i < a.size; i++)
     {
         printf("%d ", a[i]);
     }
 
-    a.xoaPhanTu(12); 
-    printf("\nSau khi xoa (size = %d): \n", a.size); 
+    a.themPhanTu(6, 2); 
+    printf("\nSau khi them phan tu (size = %d): \n", a.size);
     for (int i = 0; i < a.size; i++)
     {
         printf("%d ", a[i]);
