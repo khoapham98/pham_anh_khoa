@@ -42,5 +42,5 @@ public:
         ptr = (int*) malloc(sizeof(int) * size); 
     }
 
-    int& operator[](int index);
+    int* operator[](int index);
 };
