@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 class phan_so
 {
 public:
@@ -28,3 +30,17 @@ public:
     bool operator==(phan_so b);
 };
 
+class mang_int
+{
+public: 
+    int* ptr; 
+    int size; 
+
+    mang_int(int so_luong)
+    {
+        size = so_luong;
+        ptr = (int*) malloc(sizeof(int) * size); 
+    }
+
+    int& operator[](int index);
+};
