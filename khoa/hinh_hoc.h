@@ -49,5 +49,6 @@ public:
         printf("\nVung nho da duoc giai phong!\n"); 
     }
 
+    void xoaPhanTu(int index); 
     int& operator[](int index);
 };

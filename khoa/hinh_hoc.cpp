@@ -132,3 +132,29 @@ int& mang_int::operator[](int index)
 {
 	return ptr[index]; 
 }
+
+void mang_int::xoaPhanTu(int index)
+{
+	if (index > size - 1)
+	{
+		printf("\nPhan tu khong ton tai\n"); 
+		return; 
+	}
+	int newSize = size - 1; 
+	int* tmp_ptr = (int*)malloc(sizeof(int) * newSize);
+
+	for (int i = 0, j = 0; i < newSize; i++, j++)
+	{
+		if (j != index)
+		{
+			tmp_ptr[i] = ptr[j]; 
+
+		}
+		else
+		{
+			tmp_ptr[i] = ptr[++j]; 
+		}
+	}
+	ptr = tmp_ptr; 
+	size = newSize; 
+}
