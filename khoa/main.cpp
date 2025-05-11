@@ -3,17 +3,28 @@
 
 int main()
 {
-    phan_so a = { 5, 3 };
-    phan_so b = { 4, 2 };
+    phan_so a(2, 3);
+    phan_so b(1, 3);
+    phan_so c(4, 4);
+    phan_so d(8, 8); 
 
-    phan_so kq = a * b;
-    printf("%d/%d * ", a.tu, a.mau);
-    printf("%d/%d = ", b.tu, b.mau);
-    printf("%d/%d\n", kq.tu, kq.mau);
+    if (a > b)
+    {
+        printf("Phan so a lon hon phan so b\n"); 
+    }
+    else if (a < b)
+    {
+        printf("Phan so a nho hon phan so b\n"); 
+    }
 
-    kq = a + b;
-    printf("%d/%d + ", a.tu, a.mau);
-    printf("%d/%d = ", b.tu, b.mau);
-    printf("%d/%d\n", kq.tu, kq.mau);
+    if (c >= d)
+    {
+        printf("Phan so c lon hon hoac bang phan so d\n"); 
+    }
+    else if (c <= d)
+    {
+        printf("Phan so c nho hon hoac bang phan so d\n"); 
+    }
+
     return 0;
 }

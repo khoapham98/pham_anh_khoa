@@ -17,3 +17,63 @@ phan_so phan_so::operator+(phan_so b)
 
 	return res;
 }
+
+bool phan_so::operator>(phan_so b)
+{
+	if (((float)tu/mau) > ((float)b.tu/b.mau))
+	{
+		return true; 
+	}
+	else
+	{
+		return false; 
+	}
+}
+
+bool phan_so::operator<(phan_so b)
+{
+	if (((float)tu / mau) < ((float)b.tu / b.mau))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool phan_so::operator>=(phan_so b)
+{
+	if (((float)tu / mau) >= ((float)b.tu / b.mau))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool phan_so::operator<=(phan_so b)
+{
+	if (((float)tu / mau) <= ((float)b.tu / b.mau))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool phan_so::operator==(phan_so b)
+{
+	if (((float)tu / mau) == ((float)b.tu / b.mau))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
