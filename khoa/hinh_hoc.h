@@ -13,6 +13,7 @@ public:
     {
         tu = a;
         mau = b;
+        rutgon();
     }
 
     void rutgon();
