@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
 
 class phan_so
 {
@@ -40,7 +41,11 @@ public:
     mang_int(int so_luong)
     {
         size = so_luong;
-        ptr = (int*) malloc(sizeof(int) * size); 
+        ptr = (int*) calloc(sizeof(int), size); 
+        if (ptr == NULL)
+        {
+            throw std::runtime_error("Khong the cap phat vung nho");
+        }
     }
 
     ~mang_int()
@@ -49,7 +54,5 @@ public:
         printf("\nVung nho da duoc giai phong!\n"); 
     }
 
-    void xoaPhanTu(int index); 
-    void themPhanTu(int val, int index);
     int& operator[](int index);
 };

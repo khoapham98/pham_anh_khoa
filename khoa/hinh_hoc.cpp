@@ -8,12 +8,12 @@ void phan_so::rutgon()
 		{
 			tu /= i;
 			mau /= i;
-			return;
+			break;
 		}
 	}
+
 	return;
 }
-
 phan_so phan_so::operator+(phan_so b)
 {
 	phan_so res;
@@ -30,7 +30,6 @@ phan_so phan_so::operator+(phan_so b)
 	res.rutgon(); 
 	return res;
 }
-
 phan_so phan_so::operator-(phan_so b)
 {
 	phan_so res;
@@ -57,7 +56,6 @@ phan_so phan_so::operator*(phan_so b)
 
 	return res;
 }
-
 phan_so phan_so::operator/(phan_so b)
 {
 	phan_so res;
@@ -67,7 +65,6 @@ phan_so phan_so::operator/(phan_so b)
 
 	return res;
 }
-
 bool phan_so::operator>(phan_so b)
 {
 	if (((float)tu/mau) > ((float)b.tu/b.mau))
@@ -79,7 +76,6 @@ bool phan_so::operator>(phan_so b)
 		return false; 
 	}
 }
-
 bool phan_so::operator<(phan_so b)
 {
 	if (((float)tu / mau) < ((float)b.tu / b.mau))
@@ -91,7 +87,6 @@ bool phan_so::operator<(phan_so b)
 		return false;
 	}
 }
-
 bool phan_so::operator>=(phan_so b)
 {
 	if (((float)tu / mau) >= ((float)b.tu / b.mau))
@@ -103,7 +98,6 @@ bool phan_so::operator>=(phan_so b)
 		return false;
 	}
 }
-
 bool phan_so::operator<=(phan_so b)
 {
 	if (((float)tu / mau) <= ((float)b.tu / b.mau))
@@ -115,7 +109,6 @@ bool phan_so::operator<=(phan_so b)
 		return false;
 	}
 }
-
 bool phan_so::operator==(phan_so b)
 {
 	if (((float)tu / mau) == ((float)b.tu / b.mau))
@@ -128,56 +121,3 @@ bool phan_so::operator==(phan_so b)
 	}
 }
 
-int& mang_int::operator[](int index)
-{
-	return ptr[index]; 
-}
-
-void mang_int::xoaPhanTu(int index)
-{
-	if (index > size - 1)
-	{
-		printf("\nPhan tu khong ton tai\n"); 
-		return; 
-	}
-	int newSize = size - 1; 
-	int* tmp_ptr = (int*)malloc(sizeof(int) * newSize);
-
-	for (int i = 0, j = 0; i < newSize; i++, j++)
-	{
-		if (j != index)
-		{
-			tmp_ptr[i] = ptr[j]; 
-
-		}
-		else
-		{
-			tmp_ptr[i] = ptr[++j]; 
-		}
-	}
-	free(ptr); 
-	ptr = tmp_ptr; 
-	size = newSize; 
-}
-
-void mang_int::themPhanTu(int val, int index)
-{
-	int newSize = size + 1; 
-	int* tmp_ptr = (int*)malloc(sizeof(int) * newSize);
-	
-	for (int i = 0, j = 0; j < size; i++)
-	{
-		if (i != index)
-		{
-			tmp_ptr[i] = ptr[j++];
-		}
-		else
-		{ 
-			tmp_ptr[i] = val; 
-		}
-	}
-
-	free(ptr); 
-	ptr = tmp_ptr; 
-	size = newSize; 
-}
