@@ -1,54 +1,65 @@
-﻿#include <stdio.h>
-#include <stdlib.h>
+﻿#include <stdlib.h>
 #include <iostream>
+#include <array>
+#include <vector>
 
-template <class T, int num_item = 0>
+typedef enum
+{
+    NU,
+    NAM
+} gioitinh;
+const char* chuoi[2] = { "NU", "NAM" };
 
-class mang
+class thongtincanhan
 {
 public:
-    T* ptr;
-    int size;
+    const char* ten;
+    int tuoi;
+    gioitinh gt;
 
-    mang(int so_luong)
+    void set_ten(const char* name)
     {
-        size = so_luong;
-        ptr = (T*)malloc(sizeof(T) * size);
-        if (ptr == NULL)
-        {
-            throw std::runtime_error("Khong the cap phat vung nho");
-        }
+        ten = name;
     }
 
-    mang(std::initializer_list<T> init)
+    void get_ten()
     {
-        size = init.size();
-        ptr = (T*)malloc(sizeof(T) * size);
-        int i = 0;
-        for (auto item : init)
-        {
-            ptr[i++] = item;
-        }
+        printf("Ten : %s\n", ten);
     }
 
-    ~mang()
+    void set_tuoi(int age)
     {
-        free(ptr);
-        printf("\nVung nho da duoc giai phong!\n");
+        tuoi = age;
     }
 
-    int& operator[](int index)
+    void get_tuoi()
     {
-        return ptr[index];
+        printf("Tuoi : %d\n", tuoi);
+    }
+
+    void set_gioitinh(gioitinh x)
+    {
+        gt = x;
+    }
+
+    void get_gioitinh()
+    {
+        printf("Gioi tinh : %s\n", chuoi[gt]);
     }
 };
 
+
 int main()
 {
-    mang<int, 3> arr = { 1,2,3 };
+    thongtincanhan a;
 
-    int x = arr[2];
+    a.set_ten("Pham Anh Khoa");
+    a.set_tuoi(18);
+    a.set_gioitinh(NAM);
 
-    printf("%d", x);
+    a.get_ten();
+    a.get_tuoi();
+    a.get_gioitinh();
+
     return 0;
 }
