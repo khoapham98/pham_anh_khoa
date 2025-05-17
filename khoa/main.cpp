@@ -8,15 +8,6 @@ enum gioitinh_e
 	NU, NAM
 };
 
-enum xeploai_e
-{
-	GIOI, 
-	KHA, 
-	TRUNGBINH, 
-	YEU
-};
-string xeploai[4] = { "Gioi", "Kha", "Trung binh", "Yeu" };
-
 class ThongTinCaNhan
 {
 private:
@@ -31,7 +22,7 @@ public:
 
 	string get_ten() { return this->ten; }
 	int get_tuoi() { return this->tuoi; }
-	int get_gioi_tinh() { return this->gioitinh; }
+	string get_gioi_tinh() { return gioitinh == NAM ? "Nam" : "Nu"; }
 };
 
 class HocSinh : public ThongTinCaNhan
@@ -46,32 +37,35 @@ public:
 
 	float get_diem_toan() { return this->diemtoan; }
 	float get_diem_van() { return this->diemvan; }
-
-	float get_dtb()
-	{
-		return (this->diemtoan + this->diemvan) / 2; 
-	}
-
-	xeploai_e get_xep_loai()
+	float get_dtb() { return (this->diemtoan + this->diemvan) / 2; }
+	string get_xep_loai()
 	{
 		float res = get_dtb();
 		if (res > 8)
 		{
-			return GIOI; 
+			return "Gioi";
 		}
 		else if (res >= 6.5)
 		{
-			return KHA;
+			return "Kha";
 		}
 		else if (res >= 5)
 		{
-			return TRUNGBINH;
+			return "Trung binh";
 		}
 		else
 		{
-			return YEU;
+			return "Yeu";
 		}
 	}
+};
+
+class GiaoVien : public ThongTinCaNhan
+{
+private: 
+	float bacluong; 
+public: 
+
 };
 
 int main()
@@ -80,7 +74,7 @@ int main()
 	A.set_diem_toan(6); 
 	A.set_diem_van(8);
 
-	cout << xeploai[A.get_xep_loai()] << endl;
+	cout << A.get_xep_loai();
 	return 0; 
 }
 
