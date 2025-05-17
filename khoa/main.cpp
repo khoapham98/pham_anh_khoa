@@ -84,12 +84,28 @@ int main()
 {
 	vector<HocSinh> dshs = {
 		{"Pham Anh Khoa", 21, NAM, 8, 9},
+		{"Tran Quoc Qui", 21, NAM, 7, 8},
 		{"Tommy", 21, NAM, 6, 7} };
 
-	for (int i = 0; i < 2; i++)
+
+	cout << "Truoc khi sap xep: " << endl;
+	for (int i = 0; i < 3; i++)
 	{
 		cout << i + 1 << ". " << dshs[i].get_ten() << "," << dshs[i].get_tuoi() << "," << dshs[i].get_gioi_tinh() << "," << dshs[i].get_dtb() << endl;
 	}
+
+	sort(dshs.begin(), dshs.end(), [](HocSinh a, HocSinh b) {
+		if (a.get_dtb() < b.get_dtb())
+			return true;
+		else
+			return false; });
+
+	cout << "Sau khi sap xep: " << endl;
+	for (int i = 0; i < 3; i++)
+	{
+		cout << i + 1 << ". " << dshs[i].get_ten() << "," << dshs[i].get_tuoi() << "," << dshs[i].get_gioi_tinh() << "," << dshs[i].get_dtb() << endl;
+	}
+
 	return 0; 
 }
 
