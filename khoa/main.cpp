@@ -1,65 +1,33 @@
-﻿#include <stdlib.h>
-#include <iostream>
-#include <array>
-#include <vector>
+﻿#include <iostream>
+#include <string>
+using namespace std;
 
-typedef enum
+enum gioitinh_e
 {
-    NU,
-    NAM
-} gioitinh;
-const char* chuoi[2] = { "NU", "NAM" };
-
-class thongtincanhan
-{
-public:
-    const char* ten;
-    int tuoi;
-    gioitinh gt;
-
-    void set_ten(const char* name)
-    {
-        ten = name;
-    }
-
-    void get_ten()
-    {
-        printf("Ten : %s\n", ten);
-    }
-
-    void set_tuoi(int age)
-    {
-        tuoi = age;
-    }
-
-    void get_tuoi()
-    {
-        printf("Tuoi : %d\n", tuoi);
-    }
-
-    void set_gioitinh(gioitinh x)
-    {
-        gt = x;
-    }
-
-    void get_gioitinh()
-    {
-        printf("Gioi tinh : %s\n", chuoi[gt]);
-    }
+	NU, NAM
 };
+
+class ThongTinCaNhan
+{
+private:
+	string ten;
+	int tuoi;
+	gioitinh_e gioitinh; 
+
+public: 
+	void set_ten(string ten) { this->ten = ten; }
+	void set_tuoi(int tuoi) { this->tuoi = tuoi; }
+	void set_gioi_tinh(gioitinh_e gioitinh) { this->gioitinh = gioitinh; }
+
+	string get_ten() { return this->ten; }
+	int get_tuoi() { return this->tuoi; }
+	int get_gioi_tinh() { return this->gioitinh; }
+};
+
 
 
 int main()
 {
-    thongtincanhan a;
 
-    a.set_ten("Pham Anh Khoa");
-    a.set_tuoi(18);
-    a.set_gioitinh(NAM);
-
-    a.get_ten();
-    a.get_tuoi();
-    a.get_gioitinh();
-
-    return 0;
+	return 0; 
 }
