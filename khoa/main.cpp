@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include <string>
-#include <stdio.h>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
 enum gioitinh_e
@@ -32,6 +34,15 @@ private:
 	float diemvan; 
 
 public:
+	HocSinh(string ten, int tuoi, gioitinh_e gt, float diemtoan, float diemvan)
+	{
+		this->set_ten(ten);
+		this->set_tuoi(tuoi);
+		this->set_gioi_tinh(gt);
+		this->diemtoan = diemtoan;
+		this->diemvan = diemvan;
+	}
+
 	void set_diem_toan(float diemtoan) { this->diemtoan = diemtoan; }
 	void set_diem_van(float diemvan) { this->diemvan = diemvan; }
 
@@ -71,23 +82,16 @@ public:
 
 int main()
 {
-	HocSinh A; 
-	A.set_ten("Pham Anh Khoa");
-	A.set_diem_toan(6); 
-	A.set_diem_van(8);
+	vector<HocSinh> dshs = {
+		{"Pham Anh Khoa", 21, NAM, 8, 9},
+		{"Tommy", 21, NAM, 6, 7} };
 
-	GiaoVien B;
-	B.set_ten("Nguyen Thi B");
-	B.set_bac_luong(1.4);
-
-	cout << "Ten giao vien: " << B.get_ten() << ", bac luong: " << B.get_bac_luong() << endl;
-
-	cout << "Ten hoc sinh: " << A.get_ten() << ", xep loai: " << A.get_xep_loai() << endl;
+	for (int i = 0; i < 2; i++)
+	{
+		cout << i + 1 << ". " << dshs[i].get_ten() << "," << dshs[i].get_tuoi() << "," << dshs[i].get_gioi_tinh() << "," << dshs[i].get_dtb() << endl;
+	}
 	return 0; 
 }
-
-
-
 
 
 
