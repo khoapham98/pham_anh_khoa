@@ -63,18 +63,26 @@ public:
 class GiaoVien : public ThongTinCaNhan
 {
 private: 
-	float bacluong; 
+	float bac_luong;
 public: 
-
+	void set_bac_luong(float bac_luong) { this->bac_luong = bac_luong; }
+	float get_bac_luong() { return this->bac_luong; }
 };
 
 int main()
 {
 	HocSinh A; 
+	A.set_ten("Pham Anh Khoa");
 	A.set_diem_toan(6); 
 	A.set_diem_van(8);
 
-	cout << A.get_xep_loai();
+	GiaoVien B;
+	B.set_ten("Nguyen Thi B");
+	B.set_bac_luong(1.4);
+
+	cout << "Ten giao vien: " << B.get_ten() << ", bac luong: " << B.get_bac_luong() << endl;
+
+	cout << "Ten hoc sinh: " << A.get_ten() << ", xep loai: " << A.get_xep_loai() << endl;
 	return 0; 
 }
 
