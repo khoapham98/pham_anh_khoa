@@ -1,64 +1,72 @@
-﻿#include <iostream>
-#include <math.h>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
 
-class PTBac2
-{
-private:
-	float a; 
-	float b; 
-	float c; 
-public:
-	PTBac2(float a, float b, float c)
-	{
-		this->a = a; 
-		this->b = b; 
-		this->c = c; 
-	}
-	PTBac2()
-	{
-		this->a = 0; 
-		this->b = 0; 
-		this->c = 0; 
-	}
+typedef struct {
+	char light;
+	char fan;
+	char motor;
+} smartHome_t;
 
-	void get_result();
-};
+const char* data = "HTTP1.1 200 OK{"\
+"\"light\": \"on\","\
+"\"fan\" : \"off\","\
+"\"motor\" : \"off\"}";
 
-void PTBac2::get_result()
-{
-	if (a == 0 && b == 0)
-	{
-		if (c == 0)
-		{
-			printf("Phuong trinh co vo so nghiem\n");
-		}
-		else 
-		{
-			printf("Phuong trinh vo nghiem\n");
-		}
-		return; 
-	}
-	float delta = pow(b, 2) - (4 * a * c);
-	if (delta < 0)
-	{
-		printf("Phuong trinh vo nghiem\n"); 
-	}
-	else if (delta == 0)
-	{
-		float x = -b / (2 * a); 
-		printf("Phuong trinh co nghiem kep:\nx1 = x2 = %.2f\n", x);
-	}
-	else
-	{
-		float x1 = (-b - sqrt(delta)) / (2 * a); 
-		float x2 = (-b + sqrt(delta)) / (2 * a); 
-		printf("Phuong trinh co 2 nghiem phan biet:\nx1 = %.2f, x2 = %.2f\n", x1, x2); 
-	}
-}
+smartHome_t pair_data(const char* data);
 
 int main()
 {
-	PTBac2 fx(1, -5, 0); 
-	fx.get_result();
-	return 0; 
+	smartHome_t x = pair_data(data);
+
+	printf("light : %d\n", x.light); 
+	printf("fan : %d\n", x.fan);
+	printf("motor : %d\n", x.motor);
+
+	return 0;
+}
+
+smartHome_t pair_data(const char* data)
+{
+	smartHome_t a; 
+	int size = strlen(data); 
+	char str[6] = { 0 };
+	int state; 
+	for (int i = 0; i < size; i++)
+	{
+		int cnt = 0;
+		if (data[i] >= 'a' && data[i] <= 'z')
+		{
+			int index = i; 
+			while (data[i] >= 'a' && data[i] <= 'z') { cnt++; i++; }
+			strncpy(str, &data[index], cnt); 
+
+			while (data[i] < 'a' || data[i] > 'z') { i++; }
+
+			if (data[++i] == 'n')
+			{
+				state = 1; 
+			}
+			else
+			{
+				state = 0; 
+				i++; 
+			}
+
+			if (!strcmp(str, "light"))
+			{
+				a.light = state;
+			}
+			else if (!strcmp(str, "fan"))
+			{
+				a.fan = state;
+			}
+			else if (!strcmp(str, "motor"))
+			{
+				a.motor = state;
+			}
+		}
+	}
+
+	return a; 
 }
