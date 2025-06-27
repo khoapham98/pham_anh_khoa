@@ -1,1 +1,1 @@
-# for IMIC `🚀💯`
+# IMIC `🚀💯`
